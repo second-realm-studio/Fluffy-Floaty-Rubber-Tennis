@@ -9,6 +9,112 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
+		<SoundBank Id="534561221" Type="User" Language="SFX" Hash="{08004601-1B97-68FC-6323-93384A4FE4F9}">
+			<ShortName>MainSoundBank</ShortName>
+			<Path>MainSoundBank.bnk</Path>
+			<Media>
+				<File Id="31898918" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MainLoop_121 bpm.wav</ShortName>
+					<CachePath>SFX/MainLoop_121 bpm_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="510451979" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>IntroToMainLoop_121 bpm.wav</ShortName>
+					<CachePath>SFX/IntroToMainLoop_121 bpm_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="605409703" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>MenuMusic_Beat_Bell_Loop.wav</ShortName>
+					<CachePath>SFX/MenuMusic_Beat_Bell_Loop_FBC78EF0.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="3126765036" Name="Play_BGM" DurationType="Infinite">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="412724365" Id="2607556080"/>
+							<MediaRefs>
+								<MediaRef Id="605409703"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="412724365" Id="2764240573"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="736197432" Id="2368844905"/>
+									<MediaRefs>
+										<MediaRef Id="510451979"/>
+									</MediaRefs>
+								</SwitchContainer>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="736197432" Id="3161908922"/>
+									<MediaRefs>
+										<MediaRef Id="31898918"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="412724365" Id="1973847113"/>
+							<MediaRefs>
+								<MediaRef Id="605409703"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="999787593" Name="Set_State_BGM_Combat" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="412724365" Id="2764240573" Name="Combat"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="2302536382" Name="Set_State_BGM_Combat_Enter" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="736197432" Id="2368844905" Name="Enter"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="1593948787" Name="Set_State_BGM_Combat_Main" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="736197432" Id="3161908922" Name="Main"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="3874713034" Name="Set_State_BGM_Combat_None" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="736197432" Id="748895195" Name="None"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="3051978052" Name="Set_State_BGM_Menu" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="412724365" Id="2607556080" Name="Menu"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="1198540079" Name="Set_State_BGM_None" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="412724365" Id="748895195" Name="None"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="3642539605" Name="Set_State_BGM_Selection" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="412724365" Id="1973847113" Name="Selection"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="1073466678" Name="Stop_BGM" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+			<StateGroups>
+				<StateGroup Id="412724365" Name="BGM">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="1973847113" Name="Selection"/>
+						<State Id="2607556080" Name="Menu"/>
+						<State Id="2764240573" Name="Combat"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="736197432" Name="BGM_Combat">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="2368844905" Name="Enter"/>
+						<State Id="3161908922" Name="Main"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+		</SoundBank>
 		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{BE616CC7-E965-8B25-B311-6BF4CBC702DD}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -40,5 +146,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{C6B3DB49-27A4-173F-EEB2-D19EF3A414D2}</FileHash>
+	<FileHash>{7AA73516-A608-B9AE-4BF1-D66FE2B1A637}</FileHash>
 </SoundBanksInfo>

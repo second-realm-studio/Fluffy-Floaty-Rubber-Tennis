@@ -11,6 +11,19 @@
 
 namespace AK
 {
+    namespace EVENTS
+    {
+        static const AkUniqueID PLAY_BGM = 3126765036U;
+        static const AkUniqueID SET_STATE_BGM_COMBAT = 999787593U;
+        static const AkUniqueID SET_STATE_BGM_COMBAT_ENTER = 2302536382U;
+        static const AkUniqueID SET_STATE_BGM_COMBAT_MAIN = 1593948787U;
+        static const AkUniqueID SET_STATE_BGM_COMBAT_NONE = 3874713034U;
+        static const AkUniqueID SET_STATE_BGM_MENU = 3051978052U;
+        static const AkUniqueID SET_STATE_BGM_NONE = 1198540079U;
+        static const AkUniqueID SET_STATE_BGM_SELECTION = 3642539605U;
+        static const AkUniqueID STOP_BGM = 1073466678U;
+    } // namespace EVENTS
+
     namespace STATES
     {
         namespace BGM
@@ -39,6 +52,12 @@ namespace AK
         } // namespace BGM_COMBAT
 
     } // namespace STATES
+
+    namespace BANKS
+    {
+        static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID MAINSOUNDBANK = 534561221U;
+    } // namespace BANKS
 
     namespace BUSSES
     {

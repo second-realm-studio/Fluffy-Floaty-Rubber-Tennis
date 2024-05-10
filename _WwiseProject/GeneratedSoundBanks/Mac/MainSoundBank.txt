@@ -1,0 +1,29 @@
+Event	ID	Name			Wwise Object Path	Notes
+	999787593	Set_State_BGM_Combat			\Default Work Unit\BGM\Set_State_BGM_Combat	
+	1073466678	Stop_BGM			\Default Work Unit\BGM\Stop_BGM	
+	1198540079	Set_State_BGM_None			\Default Work Unit\BGM\Set_State_BGM_None	
+	1593948787	Set_State_BGM_Combat_Main			\Default Work Unit\BGM\Combat\Set_State_BGM_Combat_Main	
+	2302536382	Set_State_BGM_Combat_Enter			\Default Work Unit\BGM\Combat\Set_State_BGM_Combat_Enter	
+	3051978052	Set_State_BGM_Menu			\Default Work Unit\BGM\Set_State_BGM_Menu	
+	3126765036	Play_BGM			\Default Work Unit\BGM\Play_BGM	
+	3642539605	Set_State_BGM_Selection			\Default Work Unit\BGM\Set_State_BGM_Selection	
+	3874713034	Set_State_BGM_Combat_None			\Default Work Unit\BGM\Combat\Set_State_BGM_Combat_None	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	412724365	BGM			\Default Work Unit\BGM	
+	736197432	BGM_Combat			\Default Work Unit\BGM_Combat	
+
+State	ID	Name	State Group			Notes
+	748895195	None	BGM			
+	1973847113	Selection	BGM			
+	2607556080	Menu	BGM			
+	2764240573	Combat	BGM			
+	748895195	None	BGM_Combat			
+	2368844905	Enter	BGM_Combat			
+	3161908922	Main	BGM_Combat			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	31898918	MainLoop_121 bpm	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Mac\SFX\MainLoop_121 bpm_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\BGM\Combat\MainLoop_121 bpm\MainLoop_121 bpm\MainLoop_121 bpm		12186608
+	510451979	IntroToMainLoop_121 bpm	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Mac\SFX\IntroToMainLoop_121 bpm_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\BGM\Combat\IntroToMainLoop_121 bpm\IntroToMainLoop_121 bpm		1523464
+	605409703	MenuMusic_Beat_Bell_Loop	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Mac\SFX\MenuMusic_Beat_Bell_Loop_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\BGM\MenuMusic_Beat_Bell_Loop\MenuMusic_Beat_Bell_Loop\MenuMusic_Beat_Bell_Loop		1523464
+

@@ -7,7 +7,13 @@
 					<ChildrenList>
 						<Event Name="Play_BGM" ID="{3E204C99-C98A-4A51-8D19-BBBC4224255E}">
 							<ChildrenList>
-								<Action Name="" ID="{54CE69F8-85F3-402C-B170-FD775B3D01C9}" ShortID="514139332"/>
+								<Action Name="" ID="{54CE69F8-85F3-402C-B170-FD775B3D01C9}" ShortID="514139332">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM" ID="{6DEE7B24-7C9E-400D-8AC1-F31C8B58EC74}" WorkUnitID="{E66F86C2-8D26-4931-8E82-2C8D2C7F1F1C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Stop_BGM" ID="{35C82EE2-A019-4A5D-BA6B-AB96B2A40348}">
