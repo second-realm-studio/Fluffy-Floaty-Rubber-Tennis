@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F0554936-45E3-C3EB-6349-AD0BA7B53E66}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<StateGroups>
+				<StateGroup Id="412724365" Name="BGM">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="1973847113" Name="Selection"/>
+						<State Id="2607556080" Name="Menu"/>
+						<State Id="2764240573" Name="Combat"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="736197432" Name="BGM_Combat">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="2368844905" Name="Enter"/>
+						<State Id="3161908922" Name="Main"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{4E0BD4A8-7F7E-26F2-E7AF-951595C514F0}</FileHash>
+</SoundBanksInfo>

@@ -1,0 +1,20 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	412724365	BGM			\Default Work Unit\BGM	
+	736197432	BGM_Combat			\Default Work Unit\BGM_Combat	
+
+State	ID	Name	State Group			Notes
+	748895195	None	BGM			
+	1973847113	Selection	BGM			
+	2607556080	Menu	BGM			
+	2764240573	Combat	BGM			
+	748895195	None	BGM_Combat			
+	2368844905	Enter	BGM_Combat			
+	3161908922	Main	BGM_Combat			
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+

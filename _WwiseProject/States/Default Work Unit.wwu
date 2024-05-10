@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{CE955ACF-14C8-4848-A6AA-9A376C7D90FB}" SchemaVersion="119">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{CE955ACF-14C8-4848-A6AA-9A376C7D90FB}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{CE955ACF-14C8-4848-A6AA-9A376C7D90FB}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="BGM" ID="{196A4EFF-D3D9-42C2-91DF-C2CF91A8C417}">
+					<ChildrenList>
+						<State Name="None" ID="{2F240A55-88A4-4A29-8439-28FCA020A5A8}"/>
+						<State Name="Menu" ID="{AE71747D-EAFE-45F1-8C4E-DE0967A29597}"/>
+						<State Name="Selection" ID="{A6525DF6-F2EC-4FC1-8020-722ABB27B16C}"/>
+						<State Name="Combat" ID="{B882E787-E156-444D-BF41-836208022C2D}"/>
+					</ChildrenList>
+				</StateGroup>
+				<StateGroup Name="BGM_Combat" ID="{3C7D062A-C2B2-49B7-A79B-445D295538EE}">
+					<ChildrenList>
+						<State Name="None" ID="{9A231437-8821-4531-AFA3-745D60C0DC2D}"/>
+						<State Name="Enter" ID="{E2E54331-7D60-4CF6-8E0E-4D103CD2E0B1}"/>
+						<State Name="Main" ID="{DC15D701-7077-4B25-A2D2-88013CDAD30D}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>
