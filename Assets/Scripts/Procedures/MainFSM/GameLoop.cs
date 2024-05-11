@@ -13,10 +13,10 @@ namespace Procedures.MainFSM {
             rightPlayerAnimalType = $"{nameof(TennisPlayerEntity)}_{rightPlayerAnimalType}";
 
             var leftEntity = Game.Entity.InstantiateEntity<TennisPlayerEntity>(leftPlayerAnimalType, 0, false, 0);
-            var spawnPosLeft = Game.Config.FetchConfig<Vector3ConfigEntry>(ConfigNames.PlayerSpawnPositionLeft).value;
+            var spawnPosLeft = Game.Config.FetchConfig<Vector3>(ConfigNames.PlayerSpawnPositionLeft);
 
             var rightEntity = Game.Entity.InstantiateEntity<TennisPlayerEntity>(rightPlayerAnimalType, 0, false, 0);
-            var spawnPosRight = Game.Config.FetchConfig<Vector3ConfigEntry>(ConfigNames.PlayerSpawnPositionRight).value;
+            var spawnPosRight = Game.Config.FetchConfig<Vector3>(ConfigNames.PlayerSpawnPositionRight);
 
             leftEntity.transform.position = spawnPosLeft;
             rightEntity.transform.position = spawnPosRight;

@@ -1,7 +1,6 @@
 ﻿using Constants;
 using PlayerEntities;
 using UnityEngine;
-using XiheFramework.Core.Config.Entry;
 using XiheFramework.Core.FSM;
 using XiheFramework.Runtime;
 
@@ -11,8 +10,7 @@ namespace Procedures.MainFSM {
         private int m_WinScore;
         private uint m_LeftPlayerEntityId;
         private uint m_RightPlayerEntityId;
-
-
+        
         public TennisGameState(StateMachine parentStateMachine, GameObject owner) : base(parentStateMachine, owner) { }
 
         public override void OnEnter() {
@@ -23,11 +21,11 @@ namespace Procedures.MainFSM {
 
             var leftEntity = Game.Entity.InstantiateEntity<TennisPlayerEntity>(leftPlayerAnimalType, 0, false, 0);
             m_LeftPlayerEntityId = leftEntity.EntityId;
-            var spawnPosLeft = Game.Config.FetchConfig<Vector3ConfigEntry>(ConfigNames.PlayerSpawnPositionLeft).value;
+            var spawnPosLeft = Game.Config.FetchConfig<Vector3>(ConfigNames.PlayerSpawnPositionLeft);
 
             var rightEntity = Game.Entity.InstantiateEntity<TennisPlayerEntity>(rightPlayerAnimalType, 0, false, 0);
             m_RightPlayerEntityId = rightEntity.EntityId;
-            var spawnPosRight = Game.Config.FetchConfig<Vector3ConfigEntry>(ConfigNames.PlayerSpawnPositionRight).value;
+            var spawnPosRight = Game.Config.FetchConfig<Vector3>(ConfigNames.PlayerSpawnPositionRight);
 
             leftEntity.transform.position = spawnPosLeft;
             rightEntity.transform.position = spawnPosRight;
@@ -35,7 +33,7 @@ namespace Procedures.MainFSM {
             leftEntity.rigidBody.velocity = Vector3.zero;
             rightEntity.rigidBody.velocity = Vector3.zero;
 
-            m_WinScore = Game.Config.FetchConfig<IntConfigEntry>(ConfigNames.GameWinScore).value;
+            m_WinScore = Game.Config.FetchConfig<int>(ConfigNames.GameWinScore);
         }
 
         public override void OnUpdate() {

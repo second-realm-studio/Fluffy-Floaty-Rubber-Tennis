@@ -164,6 +164,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 7420987691133622626, guid: be84258d158bbdc479c6a894a2aac14f,
+        type: 3}
+      propertyPath: configJsonAsset
+      value: 
+      objectReference: {fileID: 4900000, guid: 65116777fd65c3b44a7cf2ed88f00f20, type: 3}
     - target: {fileID: 8707160360624129928, guid: be84258d158bbdc479c6a894a2aac14f,
         type: 3}
       propertyPath: m_RootOrder

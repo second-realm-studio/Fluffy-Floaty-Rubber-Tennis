@@ -1,0 +1,14 @@
+{
+  "entries": [
+    {
+      "path": "examplePath1",
+      "type": 3,
+      "value": "Hello"
+    },
+    {
+      "path": "examplePath2",
+      "type": 2,
+      "value": "123"
+    }
+  ]
+}

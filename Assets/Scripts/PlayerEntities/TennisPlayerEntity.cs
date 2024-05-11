@@ -9,14 +9,13 @@ using XiheFramework.Runtime;
 
 namespace PlayerEntities {
     public class TennisPlayerEntity : TimeBasedGameEntity {
-        public override string EntityName => entityName;
+        public override string EntityAddressName => entityName;
 
         public string entityName;
         public int inputPlayerId;
-        public float weight;
+        public float mass;
         public float airDrag;
         public float swingRadius;
-        public float speed;
 
         public Animator animator;
         public CapsuleCollider capsuleCollider;
@@ -33,7 +32,7 @@ namespace PlayerEntities {
         public override void OnInitCallback() {
             base.OnInitCallback();
 
-            rigidBody.mass = weight;
+            rigidBody.mass = mass;
             rigidBody.drag = airDrag;
             Game.Action.ChangeAction(EntityId, PlayerActionNames.PlayerIdle);
         }

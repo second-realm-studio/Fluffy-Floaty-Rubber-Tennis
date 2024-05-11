@@ -5,7 +5,7 @@ using XiheFramework.Runtime;
 
 namespace Actions {
     public class PlayerIdleAction : TennisPlayerActionEntityBase {
-        public override string EntityName => PlayerActionNames.PlayerIdle;
+        public override string EntityAddressName => PlayerActionNames.PlayerIdle;
 
         protected override void OnActionUpdate() {
             if (Game.Input(owner.inputPlayerId).GetButtonDown(InputNames.SwingHold)) {

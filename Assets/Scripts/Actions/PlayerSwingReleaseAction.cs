@@ -6,14 +6,14 @@ using XiheFramework.Runtime;
 
 namespace Actions {
     public class PlayerSwingReleaseAction : TennisPlayerActionEntityBase {
-        public override string EntityName => PlayerActionNames.PlayerSwingRelease;
+        public override string EntityAddressName => PlayerActionNames.PlayerSwingRelease;
 
         protected override void OnActionInit() {
             base.OnActionInit();
             //play swing animation
 
             //shoot raycast to detect if anything is hit
-            var colliders = Physics.OverlapSphere(Vector3.zero, 1f);
+            var colliders = Physics.OverlapSphere(Vector3.zero, owner.swingRadius);
             foreach (var col in colliders) {
                 var deltaDir = col.transform.position - owner.transform.position;
 
@@ -32,7 +32,8 @@ namespace Actions {
             }
         }
 
-        protected override void OnActionUpdate() { }
+        protected override void OnActionUpdate() {
+        }
 
         protected override void OnActionExit() { }
     }
