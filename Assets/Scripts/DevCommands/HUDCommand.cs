@@ -1,8 +1,7 @@
-﻿using System;
-using XiheFramework.Core;
+﻿using XiheFramework.Core.Console;
 using XiheFramework.Runtime;
 
-namespace DevConsole.Commands {
+namespace DevCommands {
     public class HUDCommand : IDevConsoleCommand {
         public bool Execute(string[] args) {
             if (args.Length == 0) {

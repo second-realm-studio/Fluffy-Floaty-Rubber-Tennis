@@ -1,7 +1,7 @@
-﻿using DevConsole;
+﻿using XiheFramework.Core.Console;
 using XiheFramework.Runtime;
 
-namespace Commands {
+namespace DevCommands {
     public class PauseCommand : IDevConsoleCommand {
         public bool Execute(string[] args) {
             if (args.Length == 0 || args.Length > 1) {

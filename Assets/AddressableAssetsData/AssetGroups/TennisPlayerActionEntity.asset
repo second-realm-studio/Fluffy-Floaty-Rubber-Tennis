@@ -10,19 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: TennisPlayerEntity
+  m_Name: TennisPlayerActionEntity
   m_EditorClassIdentifier: 
-  m_GroupName: TennisPlayerEntity
+  m_GroupName: TennisPlayerActionEntity
   m_Data:
     m_SerializedData: []
-  m_GUID: 510dfc6c062da7b4fb36d6ced9b2101e
+  m_GUID: b38772e2050e7ea4d892796f12d4ddb8
   m_SerializeEntries:
-  - m_GUID: 3352160711c724a43aca38969cdb124f
-    m_Address: TennisPlayerEntity_Goat
+  - m_GUID: 4cdfabdeb5ed2e1499485234bc9b4492
+    m_Address: TennisPlayerActionEntity_PlayerIdle
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: aa3c4c4c8e5b302438835e6bfb48b669
-    m_Address: TennisPlayerEntity_Rabbit
+  - m_GUID: d32b135827f607a4faba32b69e65d685
+    m_Address: TennisPlayerActionEntity_PlayerSwingHold
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: af49e20721cf133459ab4b400ae1587b
+    m_Address: TennisPlayerActionEntity_PlayerSwingRelease
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
