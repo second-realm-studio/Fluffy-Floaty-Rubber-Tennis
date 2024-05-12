@@ -33,28 +33,32 @@ namespace Actions {
                 var deltaDir = sphereHit.point - owner.transform.position;
                 var distance = Vector3.Distance(owner.transform.position, sphereHit.point);
                 distance = Mathf.Clamp(distance, 0, owner.swingRadius);
-                var force = swingDir.ToVector3(V2ToV3Type.XY) * (Mathf.Lerp(0, 5, (owner.swingRadius - 0) / owner.swingRadius) * owner.power);
+                var force = swingDir.ToVector3(V2ToV3Type.XY) * owner.power;
 
                 var rb = sphereHit.collider.GetComponent<Rigidbody>();
                 if (rb != null) {
                     //replace 0 to distance
+                    var originForce = rb.velocity.magnitude * 500f;
                     rb.velocity = Vector3.zero;
-                    rb.AddForceAtPosition(force, sphereHit.point, ForceMode.Impulse);
+                    rb.AddForceAtPosition((originForce + owner.power) * swingDir.ToVector3(V2ToV3Type.XY), sphereHit.point, ForceMode.Impulse);
+                    Game.LogicTime.SetGlobalTimeScaleInSecond(0.05f, 1f, true);
                 }
 
                 if (Physics.Raycast(sphereHit.point, -deltaDir, out var hitOnOwner, owner.swingRadius)) {
+                    var originForce = owner.rigidBody.velocity.magnitude;
                     owner.rigidBody.velocity = Vector3.zero;
-                    owner.rigidBody.AddForceAtPosition(-force, hitOnOwner.point, ForceMode.Impulse);
+                    owner.rigidBody.AddForceAtPosition(-(force + originForce * force.normalized), hitOnOwner.point, ForceMode.Impulse);
                 }
                 else {
+                    var originForce = owner.rigidBody.velocity.magnitude;
                     owner.rigidBody.velocity = Vector3.zero;
-                    owner.rigidBody.AddForceAtPosition(-force, owner.transform.position, ForceMode.Impulse);
+                    owner.rigidBody.AddForceAtPosition(-(force + originForce * force.normalized), owner.transform.position, ForceMode.Impulse);
                 }
 
-                Game.LogicTime.SetGlobalTimeScaleInSecond(0.05f, 1f, true);
+                Game.Event.Invoke(EventNames.OnBallHit, owner.EntityId);
             }
             else {
-                owner.rigidBody.AddForceAtPosition(-swingDir * 0.1f, owner.transform.position, ForceMode.Impulse);
+                owner.rigidBody.AddForceAtPosition(-swingDir * 0.2f, owner.transform.position, ForceMode.Impulse);
             }
         }
 

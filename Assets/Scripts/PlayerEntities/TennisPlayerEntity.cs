@@ -14,6 +14,7 @@ namespace PlayerEntities {
         public override string EntityAddressName => animalType.ToString();
 
         public AnimalType animalType;
+        public bool isRightSide;
         public int inputId; //rewired player id
         public float power;
         public float mass;

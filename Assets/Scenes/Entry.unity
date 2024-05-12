@@ -314,5 +314,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: XiheFramework Demo
       objectReference: {fileID: 0}
+    - target: {fileID: 8291673203222355487, guid: 72ef72439fba2ba428ba3f95fddc332b,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291673203222355487, guid: 72ef72439fba2ba428ba3f95fddc332b,
+        type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291673203222355487, guid: 72ef72439fba2ba428ba3f95fddc332b,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291673203222355487, guid: 72ef72439fba2ba428ba3f95fddc332b,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291673203222355487, guid: 72ef72439fba2ba428ba3f95fddc332b,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72ef72439fba2ba428ba3f95fddc332b, type: 3}
