@@ -57,8 +57,36 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Spine
+        weight: 1
+      - path: Armature/Spine/Arm_L
+        weight: 1
+      - path: Armature/Spine/Arm_L/Arm_L_end
+        weight: 1
+      - path: Armature/Spine/Arm_R
+        weight: 0
+      - path: Armature/Spine/Arm_R/Arm_R_end
+        weight: 0
+      - path: Armature/Spine/Head
+        weight: 1
+      - path: Armature/Spine/Head/Ear_L
+        weight: 1
+      - path: Armature/Spine/Head/Ear_L/Ear_L_end
+        weight: 1
+      - path: Armature/Spine/Head/Ear_R
+        weight: 1
+      - path: Armature/Spine/Head/Ear_R/Ear_R_end
+        weight: 1
+      - path: CharacterGrey
+        weight: 1
+      - path: Empty
+        weight: 1
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     isReadable: 0
@@ -118,7 +146,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: 
+    rootMotionBoneName: Armature
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
@@ -126,7 +154,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
