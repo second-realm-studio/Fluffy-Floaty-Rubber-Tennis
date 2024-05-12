@@ -1,14 +1,45 @@
 {
   "entries": [
     {
-      "path": "examplePath1",
-      "type": 3,
-      "value": "Hello"
+      "path": "Player.SwingChargeSpeed",
+      "type": 1,
+      "value": "1"
     },
     {
-      "path": "examplePath2",
-      "type": 2,
-      "value": "123"
+      "path": "Player.SpawnPosition.Left",
+      "type": 4,
+      "value": {
+        "x": 4.0,
+        "y": 5.0,
+        "z": 6.0,
+        "normalized": {
+          "x": 0.455842316,
+          "y": 0.5698029,
+          "z": 0.683763444,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0
+        },
+        "magnitude": 8.774964,
+        "sqrMagnitude": 77.0
+      }
+    },
+    {
+      "path": "Player.SpawnPosition.Right",
+      "type": 4,
+      "value": {
+        "x": 4.0,
+        "y": 5.0,
+        "z": 6.0,
+        "normalized": {
+          "x": 0.455842316,
+          "y": 0.5698029,
+          "z": 0.683763444,
+          "magnitude": 1.0,
+          "sqrMagnitude": 1.0
+        },
+        "magnitude": 8.774964,
+        "sqrMagnitude": 77.0
+      }
     }
   ]
 }

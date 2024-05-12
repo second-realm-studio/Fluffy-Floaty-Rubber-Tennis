@@ -1,8 +1,8 @@
 ﻿namespace Constants {
     public static class ConfigNames {
-        public const string PlayerSwingChargeSpeed = "PlayerSwingChargeSpeed";
-        public const string PlayerSpawnPositionLeft = "PlayerSpawnPositionLeft";
-        public const string PlayerSpawnPositionRight = "PlayerSpawnPositionRight";
+        public const string PlayerSwingChargeSpeed = "Player.SwingChargeSpeed";
+        public const string PlayerSpawnPositionLeft = "Player.SpawnPosition.Left";
+        public const string PlayerSpawnPositionRight = "Player.SpawnPosition.Right";
         public const string GameWinScore = "GameWinScore";
     }
 }

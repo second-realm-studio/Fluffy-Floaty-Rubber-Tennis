@@ -49,9 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalType: 4
   inputId: 0
+  power: 3
   mass: 2
   airDrag: 0.01
-  swingRadius: 2
+  swingRadius: 3
   animator: {fileID: 0}
   capsuleCollider: {fileID: 7949967626886697326}
   rigidBody: {fileID: 856479692733413344}

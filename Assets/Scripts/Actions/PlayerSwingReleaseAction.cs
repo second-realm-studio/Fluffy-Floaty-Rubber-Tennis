@@ -24,7 +24,6 @@ namespace Actions {
 
             // var isHit = Physics.Raycast(owner.transform.position, swingDir.ToVector3(V2ToV3Type.XY), out var sphereHit, owner.swingRadius, hitLayerMask);
             if (isHit) {
-                Debug.Log("Hit at" + sphereHit.point);
                 var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 go.transform.position = sphereHit.point;
                 go.transform.localScale = Vector3.one * 0.1f;
@@ -40,7 +39,7 @@ namespace Actions {
                 if (rb != null) {
                     //replace 0 to distance
                     rb.velocity = Vector3.zero;
-                    rb.AddForceAtPosition(force, sphereHit.point, ForceMode.VelocityChange);
+                    rb.AddForceAtPosition(force, sphereHit.point, ForceMode.Impulse);
                 }
 
                 if (Physics.Raycast(sphereHit.point, -deltaDir, out var hitOnOwner, owner.swingRadius)) {

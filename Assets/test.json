@@ -1,0 +1,51 @@
+[
+  {
+    "x": 1.0,
+    "y": 2.0,
+    "z": 3.0,
+    "normalized": {
+      "x": 0.267261237,
+      "y": 0.5345225,
+      "z": 0.8017837,
+      "normalized": {
+        "x": 0.267261267,
+        "y": 0.534522533,
+        "z": 0.801783741,
+        "magnitude": 1.0,
+        "sqrMagnitude": 1.00000012
+      },
+      "magnitude": 0.99999994,
+      "sqrMagnitude": 0.99999994
+    },
+    "magnitude": 3.7416575,
+    "sqrMagnitude": 14.0
+  },
+  {
+    "x": 4.0,
+    "y": 5.0,
+    "z": 6.0,
+    "normalized": {
+      "x": 0.455842316,
+      "y": 0.5698029,
+      "z": 0.683763444,
+      "magnitude": 1.0,
+      "sqrMagnitude": 1.0
+    },
+    "magnitude": 8.774964,
+    "sqrMagnitude": 77.0
+  },
+  {
+    "x": 7.0,
+    "y": 8.0,
+    "z": 9.0,
+    "normalized": {
+      "x": 0.5025707,
+      "y": 0.5743665,
+      "z": 0.646162331,
+      "magnitude": 1.0,
+      "sqrMagnitude": 0.99999994
+    },
+    "magnitude": 13.9283886,
+    "sqrMagnitude": 194.0
+  }
+]
