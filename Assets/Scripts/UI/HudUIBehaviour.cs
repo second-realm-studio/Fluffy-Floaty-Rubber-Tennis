@@ -5,7 +5,7 @@ using XiheFramework.Core.UI;
 using XiheFramework.Runtime;
 
 namespace UI {
-    public class HUDUIBehaviour : UIBehaviour {
+    public class HudUIBehaviour : UIBehaviour {
         public Slider scoreSlider;
 
         private string m_OnDataChangeEventHandlerId;

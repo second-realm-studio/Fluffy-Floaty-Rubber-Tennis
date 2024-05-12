@@ -16,7 +16,8 @@ namespace AK
         static const AkUniqueID PLAY_BGM = 3126765036U;
         static const AkUniqueID PLAY_CHARASELECTED = 1209185904U;
         static const AkUniqueID PLAY_GAMEOVER = 3174629258U;
-        static const AkUniqueID PLAY_HIT = 2960666077U;
+        static const AkUniqueID PLAY_HIT_BALL = 1963377567U;
+        static const AkUniqueID PLAY_HIT_OBSTACLE = 3306622211U;
         static const AkUniqueID PLAY_SCORE = 3240049516U;
         static const AkUniqueID PLAY_SPEEDBOOST = 3080395584U;
         static const AkUniqueID PLAY_SWING = 989180208U;

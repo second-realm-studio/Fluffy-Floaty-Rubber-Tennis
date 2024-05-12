@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="534561221" Type="User" Language="SFX" Hash="{DC86F68F-4FAF-8AE6-A4DA-7ABCE8DCCB13}">
+		<SoundBank Id="534561221" Type="User" Language="SFX" Hash="{E92A7705-D22A-D675-6864-DFC3A333035B}">
 			<ShortName>MainSoundBank</ShortName>
 			<Path>MainSoundBank.bnk</Path>
 			<Media>
@@ -98,7 +98,12 @@
 						<MediaRef Id="140665588"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2960666077" Name="Play_Hit" DurationType="OneShot" DurationMin="0.10134436" DurationMax="0.10134436">
+				<Event Id="1963377567" Name="Play_Hit_Ball" DurationType="OneShot" DurationMin="0.10134436" DurationMax="0.10134436">
+					<MediaRefs>
+						<MediaRef Id="283284255"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3306622211" Name="Play_Hit_Obstacle" DurationType="OneShot" DurationMin="0.10134436" DurationMax="0.10134436">
 					<MediaRefs>
 						<MediaRef Id="283284255"/>
 					</MediaRefs>
@@ -205,5 +210,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{D4C8BD1D-F08B-4542-9A92-5694FD138753}</FileHash>
+	<FileHash>{FE53FFE0-7760-B25B-C31F-C16F3846E4F1}</FileHash>
 </SoundBanksInfo>

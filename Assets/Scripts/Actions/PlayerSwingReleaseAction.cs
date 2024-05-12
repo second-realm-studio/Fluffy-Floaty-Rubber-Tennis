@@ -1,8 +1,10 @@
 using System;
+using Balls;
 using Constants;
 using PlayerEntities;
 using UnityEngine;
 using XiheFramework.Combat.Action;
+using XiheFramework.Core.Entity;
 using XiheFramework.Core.Utility.Extension;
 using XiheFramework.Runtime;
 
@@ -38,7 +40,7 @@ namespace Actions {
                 var deltaDir = sphereHit.point - owner.transform.position;
                 var distance = Vector3.Distance(owner.transform.position, sphereHit.point);
                 distance = Mathf.Clamp(distance, 0, owner.swingRadius);
-                var force = swingDir.ToVector3(V2ToV3Type.XY) * owner.power;
+                var force = swingDir.ToVector3(V2ToV3Type.XY) * (owner.power * (1 + swingPower));
 
                 var rb = sphereHit.collider.GetComponent<Rigidbody>();
                 if (rb != null) {
@@ -47,7 +49,11 @@ namespace Actions {
                     var originForce = rb.velocity.magnitude * 5f;
                     rb.velocity = Vector3.zero;
                     rb.AddForceAtPosition((originForce + owner.power) * swingDir.ToVector3(V2ToV3Type.XY), sphereHit.point, ForceMode.Impulse);
-                    Game.LogicTime.SetGlobalTimeScaleInSecond(0.05f, 1f, true);
+                    if (rb.GetComponent<GeneralBallEntity>() != null) {
+                        //is a ball
+                        Game.LogicTime.SetGlobalTimeScaleInSecond(0.05f, 0.75f, true);
+                        Game.Event.Invoke(EventNames.OnBallHit, owner.EntityId);
+                    }
                 }
 
                 if (Physics.Raycast(sphereHit.point, -deltaDir, out var hitOnOwner, owner.swingRadius)) {
@@ -60,8 +66,6 @@ namespace Actions {
                     owner.rigidBody.velocity = Vector3.zero;
                     owner.rigidBody.AddForceAtPosition(-(force + originForce * force.normalized), owner.transform.position, ForceMode.Impulse);
                 }
-
-                Game.Event.Invoke(EventNames.OnBallHit, owner.EntityId);
             }
             else {
                 owner.rigidBody.AddForceAtPosition(-swingDir * 0.2f, owner.transform.position, ForceMode.Impulse);

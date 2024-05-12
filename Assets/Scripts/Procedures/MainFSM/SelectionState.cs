@@ -1,10 +1,14 @@
-﻿using Constants;
+﻿using System.Collections;
+using Constants;
 using UnityEngine;
 using XiheFramework.Core.FSM;
 using XiheFramework.Runtime;
 
 namespace Procedures.MainFSM {
     public class SelectionState : State<GameObject> {
+        private Camera m_CameraP1;
+        private Camera m_CameraP2;
+
         private string m_OnBothSideReadyEventHandlerId;
         public SelectionState(StateMachine parentStateMachine, GameObject owner) : base(parentStateMachine, owner) { }
 
@@ -13,7 +17,8 @@ namespace Procedures.MainFSM {
             m_OnBothSideReadyEventHandlerId = Game.Event.Subscribe(EventNames.OnBothSideReady, OnBothSideReady);
         }
 
-        public override void OnUpdate() { }
+        public override void OnUpdate() {
+        }
 
         public override void OnExit() {
             Game.Event.Unsubscribe(EventNames.OnBothSideReady, m_OnBothSideReadyEventHandlerId);

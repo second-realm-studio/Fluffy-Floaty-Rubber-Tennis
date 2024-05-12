@@ -158,12 +158,12 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Play_Hit" ID="{4BC9EC00-55FA-42C8-BB6E-442DCCABD9FE}">
+						<Event Name="Play_Hit_Ball" ID="{4BC9EC00-55FA-42C8-BB6E-442DCCABD9FE}">
 							<ChildrenList>
 								<Action Name="" ID="{5C529EDB-7602-478F-B6E6-6526CD078B9D}" ShortID="904385704">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Hit" ID="{CC139D73-3F2B-4F09-8CDA-C41C23618B1E}" WorkUnitID="{4415D529-183D-4900-B154-DD466B01A935}"/>
+											<ObjectRef Name="HitBall" ID="{CC139D73-3F2B-4F09-8CDA-C41C23618B1E}" WorkUnitID="{4415D529-183D-4900-B154-DD466B01A935}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -197,6 +197,17 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="GameEndYay" ID="{CBA4141D-82A7-4E81-9A02-4AC63E2C66FB}" WorkUnitID="{4415D529-183D-4900-B154-DD466B01A935}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Hit_Obstacle" ID="{FABE3E42-DAFB-4B37-B8A6-9429EC7848DE}">
+							<ChildrenList>
+								<Action Name="" ID="{08B76D65-ACCE-4316-9839-A794BE1288AC}" ShortID="58013628">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="HitBall" ID="{CC139D73-3F2B-4F09-8CDA-C41C23618B1E}" WorkUnitID="{4415D529-183D-4900-B154-DD466B01A935}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

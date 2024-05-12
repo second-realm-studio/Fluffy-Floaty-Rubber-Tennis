@@ -1,4 +1,5 @@
-﻿using Constants;
+﻿using Balls;
+using Constants;
 using PlayerEntities;
 using UnityEngine;
 using XiheFramework.Core.FSM;
@@ -45,8 +46,12 @@ namespace Procedures.MainFSM {
             right.inputId = 1;
             right.isRightSide = true;
 
+            var ball = Game.Entity.InstantiateEntity<GeneralBallEntity>("BallEntity_GeneralBall");
+            ball.transform.position = new Vector3(0, 0, 0);
+            ball.rigidBody.velocity = Vector3.zero;
+
             // m_WinScore = Game.Config.FetchConfig<int>(ConfigNames.GameWinScore);
-            m_WinScore = 4;
+            m_WinScore = 3;
         }
 
         public override void OnUpdate() { }

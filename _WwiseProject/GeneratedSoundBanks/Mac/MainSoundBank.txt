@@ -5,13 +5,14 @@ Event	ID	Name			Wwise Object Path	Notes
 	1198540079	Set_State_BGM_None			\Default Work Unit\BGM\Set_State_BGM_None	
 	1209185904	Play_CharaSelected			\Default Work Unit\SFX\Play_CharaSelected	
 	1593948787	Set_State_BGM_Combat_Main			\Default Work Unit\BGM\Combat\Set_State_BGM_Combat_Main	
+	1963377567	Play_Hit_Ball			\Default Work Unit\SFX\Play_Hit_Ball	
 	2302536382	Set_State_BGM_Combat_Enter			\Default Work Unit\BGM\Combat\Set_State_BGM_Combat_Enter	
-	2960666077	Play_Hit			\Default Work Unit\SFX\Play_Hit	
 	3051978052	Set_State_BGM_Menu			\Default Work Unit\BGM\Set_State_BGM_Menu	
 	3080395584	Play_SpeedBoost			\Default Work Unit\SFX\Play_SpeedBoost	
 	3126765036	Play_BGM			\Default Work Unit\BGM\Play_BGM	
 	3174629258	Play_GameOver			\Default Work Unit\SFX\Play_GameOver	
 	3240049516	Play_Score			\Default Work Unit\SFX\Play_Score	
+	3306622211	Play_Hit_Obstacle			\Default Work Unit\SFX\Play_Hit_Obstacle	
 	3642539605	Set_State_BGM_Selection			\Default Work Unit\BGM\Set_State_BGM_Selection	
 	3874713034	Set_State_BGM_Combat_None			\Default Work Unit\BGM\Combat\Set_State_BGM_Combat_None	
 
@@ -31,7 +32,7 @@ State	ID	Name	State Group			Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	31898918	MainLoop_121 bpm	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Mac\SFX\MainLoop_121 bpm_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\BGM\Combat\MainLoop_121 bpm\MainLoop_121 bpm\MainLoop_121 bpm		12186608
 	140665588	GameEndYay	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Mac\SFX\GameEndYay_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameEndYay		216260
-	283284255	Hit	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Mac\SFX\Hit_1_F48C98F1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hit		19556
+	283284255	HitBall	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Mac\SFX\Hit_1_F48C98F1.wem		\Actor-Mixer Hierarchy\Default Work Unit\HitBall		19556
 	310104256	Swing_2	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Mac\SFX\Swing_2_E9E65E0C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Swing\Swing_2		41404
 	362374126	Score	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Mac\SFX\Score_2_13FF797D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Score		118788
 	446678308	SpeedBoost	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Mac\SFX\SpeedBoost_BB4A8C52.wem		\Actor-Mixer Hierarchy\Default Work Unit\SpeedBoost		94188

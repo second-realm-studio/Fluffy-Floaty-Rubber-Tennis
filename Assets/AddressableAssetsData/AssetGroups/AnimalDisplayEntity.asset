@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: AnimalDisplayEntity
+  m_EditorClassIdentifier: 
+  m_GroupName: AnimalDisplayEntity
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 6228de183669c9c458c0756fee3ecc97
+  m_SerializeEntries:
+  - m_GUID: ec4e3728d4810bb4e98abaf1208fd185
+    m_Address: AnimalDisplayEntity_Cat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 767ff72ec8bef90499b3da32e07d2c75
+    m_Address: AnimalDisplayEntity_Goat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c4da12056ab4a36428a82b15018d70db
+    m_Address: AnimalDisplayEntity_Mouse
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ff21cbcdaca69e348979f0195273c8db
+    m_Address: AnimalDisplayEntity_Dog
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c6a592d43dfb7d045869d6c144187936
+    m_Address: AnimalDisplayEntity_Rabbit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2bbca0624cfcfb8428495723ff90d487
+    m_Address: AnimalDisplayEntity_Sheep
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b37e3de3bc5dd444ea6ee0440ff33262, type: 2}
+  m_SchemaSet:
+    m_Schemas: []

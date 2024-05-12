@@ -3,7 +3,7 @@
         Sheep = 0,
         Cat = 1,
         Goat = 2,
-        Pig = 3,
+        Dog = 3,
         Rabbit = 4,
         Mouse = 5,
     }

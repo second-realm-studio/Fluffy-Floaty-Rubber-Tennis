@@ -23,13 +23,13 @@ namespace Procedures.MainFSM {
         public override void OnUpdate() { }
 
         public override void OnExit() {
-            Game.UI.UnactivateUI(UINames.Menu);
             Game.Event.Unsubscribe(EventNames.OnStartBtnClicked, m_OnStartBtnClickedEventHandlerId);
             Game.Event.Unsubscribe(EventNames.OnExitBtnClicked, m_OnExitBtnClickedEventHandlerId);
         }
 
         private void OnStartBtnClicked(object sender, object e) {
-            Game.Scene.LoadSceneAsync(SceneNames.Game, LoadSceneMode.Single, true, (scene) => { ChangeState(GameLoopStatesNames.Game); });
+            Game.UI.UnactivateUI(UINames.Menu);
+            Game.Scene.LoadSceneAsync(SceneNames.Game, LoadSceneMode.Single, true, (scene) => { ChangeState(GameLoopStatesNames.Selection); });
         }
 
         private void OnExitBtnClicked(object sender, object e) {
