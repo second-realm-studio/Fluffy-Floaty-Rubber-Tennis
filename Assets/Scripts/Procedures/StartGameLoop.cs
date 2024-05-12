@@ -1,11 +1,10 @@
-﻿using System;
-using Constants;
-using PlayerEntities;
+﻿using Constants;
+using Procedures.MainFSM;
 using UnityEngine;
 using XiheFramework.Core.Base;
 using XiheFramework.Runtime;
 
-namespace Procedures.MainFSM {
+namespace Procedures {
     public class StartGameLoop : MonoBehaviour {
         private void Start() {
             Game.Event.Subscribe(GameManager.onXiheFrameworkInitialized, OnXiheFrameworkInitialized);

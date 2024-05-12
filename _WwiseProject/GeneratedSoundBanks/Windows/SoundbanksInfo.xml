@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="534561221" Type="User" Language="SFX" Hash="{08004601-1B97-68FC-6323-93384A4FE4F9}">
+		<SoundBank Id="534561221" Type="User" Language="SFX" Hash="{91B45023-E463-F471-6956-21AA8DEF94C6}">
 			<ShortName>MainSoundBank</ShortName>
 			<Path>MainSoundBank.bnk</Path>
 			<Media>
@@ -17,13 +17,37 @@
 					<ShortName>MainLoop_121 bpm.wav</ShortName>
 					<CachePath>SFX/MainLoop_121 bpm_FBC78EF0.wem</CachePath>
 				</File>
+				<File Id="283284255" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hit_1.wav</ShortName>
+					<CachePath>SFX/Hit_1_F48C98F1.wem</CachePath>
+				</File>
+				<File Id="310104256" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Swing_2.wav</ShortName>
+					<CachePath>SFX/Swing_2_E9E65E0C.wem</CachePath>
+				</File>
+				<File Id="362374126" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Score_2.wav</ShortName>
+					<CachePath>SFX/Score_2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="446678308" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SpeedBoost.wav</ShortName>
+					<CachePath>SFX/SpeedBoost_BB4A8C52.wem</CachePath>
+				</File>
 				<File Id="510451979" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>IntroToMainLoop_121 bpm.wav</ShortName>
 					<CachePath>SFX/IntroToMainLoop_121 bpm_FBC78EF0.wem</CachePath>
 				</File>
+				<File Id="520605636" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>CharacterSelect_1.wav</ShortName>
+					<CachePath>SFX/CharacterSelect_1_447E5F2A.wem</CachePath>
+				</File>
 				<File Id="605409703" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>MenuMusic_Beat_Bell_Loop.wav</ShortName>
 					<CachePath>SFX/MenuMusic_Beat_Bell_Loop_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="974746194" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Swings.wav</ShortName>
+					<CachePath>SFX/Swings_24DF1D73.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -59,6 +83,32 @@
 							</MediaRefs>
 						</SwitchContainer>
 					</SwitchContainers>
+				</Event>
+				<Event Id="1209185904" Name="Play_CharaSelected" DurationType="OneShot" DurationMin="0.7631851" DurationMax="0.7631851">
+					<MediaRefs>
+						<MediaRef Id="520605636"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2960666077" Name="Play_Hit" DurationType="OneShot" DurationMin="0.10134436" DurationMax="0.10134436">
+					<MediaRefs>
+						<MediaRef Id="283284255"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3240049516" Name="Play_Score" DurationType="OneShot" DurationMin="0.63125" DurationMax="0.63125">
+					<MediaRefs>
+						<MediaRef Id="362374126"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3080395584" Name="Play_SpeedBoost" DurationType="OneShot" DurationMin="0.533385" DurationMax="0.533385">
+					<MediaRefs>
+						<MediaRef Id="446678308"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="989180208" Name="Play_Swing" DurationType="OneShot" DurationMin="0.18092029" DurationMax="0.29069644">
+					<MediaRefs>
+						<MediaRef Id="310104256"/>
+						<MediaRef Id="974746194"/>
+					</MediaRefs>
 				</Event>
 				<Event Id="999787593" Name="Set_State_BGM_Combat" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<ActionSetState>
@@ -146,5 +196,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7AA73516-A608-B9AE-4BF1-D66FE2B1A637}</FileHash>
+	<FileHash>{13C26BE7-34CF-D6FD-019F-7EC59F1666BE}</FileHash>
 </SoundBanksInfo>

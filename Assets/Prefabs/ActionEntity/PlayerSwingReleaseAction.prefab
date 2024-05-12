@@ -48,4 +48,14 @@ MonoBehaviour:
   hitMaterial: {fileID: 2100000, guid: b01bdf79367e81b43b0bc7aea985d2d6, type: 2}
   hitLayerMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 832
+  swingSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 1747828fd937f21439e7325def67dac5,
+      type: 2}
+  hitSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: fbdd8ed07e9deda468cddb48f94cc110,
+      type: 2}

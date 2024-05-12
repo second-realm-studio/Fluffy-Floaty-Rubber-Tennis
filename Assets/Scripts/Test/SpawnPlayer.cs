@@ -1,3 +1,4 @@
+using Balls;
 using Constants;
 using PlayerEntities;
 using UnityEngine;
@@ -15,6 +16,12 @@ namespace Test {
             right.transform.position = new Vector3(10, -2, 0);
             right.inputId = 1;
             right.isRightSide = true;
+
+            //spawn ball
+            var ball = Game.Entity.InstantiateEntity<GeneralBallEntity>("BallEntity_GeneralBall");
+            ball.transform.position = new Vector3(0, 0, 0);
+            ball.rigidBody.velocity = Vector3.zero; 
+
 
             //enable input catergory
             Game.Input(0).controllers.maps.SetMapsEnabled(true, InputNames.CategoryGame);

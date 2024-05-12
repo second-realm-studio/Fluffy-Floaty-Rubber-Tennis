@@ -13,8 +13,13 @@ namespace Actions {
         public Material hitMaterial;
         public LayerMask hitLayerMask;
 
+        public AK.Wwise.Event swingSound;
+        public AK.Wwise.Event hitSound;
+
         protected override void OnActionInit() {
             base.OnActionInit();
+            swingSound.Post(owner.gameObject);
+
             var swingDir = FetchArgument<Vector2>(ActionArgumentNames.SwingDirection);
             var swingPower = FetchArgument<float>(ActionArgumentNames.SwingPower);
 
@@ -38,7 +43,8 @@ namespace Actions {
                 var rb = sphereHit.collider.GetComponent<Rigidbody>();
                 if (rb != null) {
                     //replace 0 to distance
-                    var originForce = rb.velocity.magnitude * 500f;
+                    hitSound.Post(owner.gameObject);
+                    var originForce = rb.velocity.magnitude * 5f;
                     rb.velocity = Vector3.zero;
                     rb.AddForceAtPosition((originForce + owner.power) * swingDir.ToVector3(V2ToV3Type.XY), sphereHit.point, ForceMode.Impulse);
                     Game.LogicTime.SetGlobalTimeScaleInSecond(0.05f, 1f, true);
