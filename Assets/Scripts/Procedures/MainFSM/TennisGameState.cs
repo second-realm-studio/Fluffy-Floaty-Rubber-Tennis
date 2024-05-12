@@ -16,6 +16,8 @@ namespace Procedures.MainFSM {
         public TennisGameState(StateMachine parentStateMachine, GameObject owner) : base(parentStateMachine, owner) { }
 
         public override void OnEnter() {
+            Game.UI.ActivateUI(UINames.GameHud);
+
             Game.Event.Subscribe(EventNames.OnScoreChanged, OnScoreChanged);
             Game.Event.Subscribe(EventNames.OnBallAddHitCount, OnBallAddHitCount);
 
@@ -50,6 +52,7 @@ namespace Procedures.MainFSM {
         public override void OnUpdate() { }
 
         public override void OnExit() {
+            Game.UI.UnactivateUI(UINames.GameHud);
             Game.Entity.DestroyEntity(m_LeftPlayerEntityId);
             Game.Entity.DestroyEntity(m_RightPlayerEntityId);
         }

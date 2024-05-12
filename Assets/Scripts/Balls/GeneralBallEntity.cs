@@ -29,7 +29,6 @@ namespace Balls {
 
 
         public override void OnFixedUpdateCallback() {
-            Debug.Log("OnFixedUpdateCallback");
             rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxSpeedClamp);
         }
 

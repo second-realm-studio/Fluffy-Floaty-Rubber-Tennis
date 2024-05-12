@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: TennisPlayerEntity_Rabbit
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6376939083943424385455646538a506
+    m_Address: TennisPlayerEntity_Sheep
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b37e3de3bc5dd444ea6ee0440ff33262, type: 2}
   m_SchemaSet:

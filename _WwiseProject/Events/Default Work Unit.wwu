@@ -191,6 +191,17 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Play_GameOver" ID="{521D5C0B-D4BE-465E-B257-AD315C909747}">
+							<ChildrenList>
+								<Action Name="" ID="{525AE3DE-44AA-4910-B0F1-7ACD86D3AE41}" ShortID="979924056">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="GameEndYay" ID="{CBA4141D-82A7-4E81-9A02-4AC63E2C66FB}" WorkUnitID="{4415D529-183D-4900-B154-DD466B01A935}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

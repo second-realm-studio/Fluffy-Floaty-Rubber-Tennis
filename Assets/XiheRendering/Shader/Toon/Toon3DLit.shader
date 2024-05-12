@@ -1,6 +1,8 @@
 Shader "XiheRendering/Toon/Toon3DLit" {
     Properties {
         [MainTexture] _MainTex ("Albedo Texture", 2D) = "white" {}
+        _FaceTex ("Face Texture", 2D) = "white" {}
+
         _CutoffThreshold("_Cutoff Threshold",Range(0,1)) = 0.5
         _NormalTex ("Normal Texture", 2D) = "bump" {}
         _NormalStrength ("Normal Strength", Range(0, 1)) = 1
@@ -63,6 +65,7 @@ Shader "XiheRendering/Toon/Toon3DLit" {
                 float3 normalOS : NORMAL;
                 float4 tangentOS : TANGENT;
                 float4 uv0 : TEXCOORD0;
+                float4 uv1: TEXCOORD1;
             };
 
             struct Varyings
@@ -74,6 +77,7 @@ Shader "XiheRendering/Toon/Toon3DLit" {
                 float4 tangentWS : TEXCOORD3;
                 float2 silhouette : TEXCOORD4; //silhouette factor and dithering factor
                 float4 screenPos : TEXCOORD5;
+                float2 uv1 : TEXCOORD6;
             };
 
             //Properties
@@ -101,6 +105,11 @@ Shader "XiheRendering/Toon/Toon3DLit" {
             SamplerState sampler_linear_clamp;
             TEXTURE2D(_MainTex);
             SAMPLER(sampler_MainTex);
+
+            TEXTURE2D(_FaceTex);
+            SamplerState sampler_FaceTex;
+            float4 _FaceTex_ST;
+
 
             TEXTURE2D(_NormalTex);
             SAMPLER(sampler_NormalTex);
@@ -149,25 +158,30 @@ Shader "XiheRendering/Toon/Toon3DLit" {
                 float ditheringFactor = (clamp(camDistance, _AntiOcclusionMin, _AntiOcclusionMax) - _AntiOcclusionMin) / (_AntiOcclusionMax - _AntiOcclusionMin);
                 OUT.silhouette = float2(silhouetteFactor, ditheringFactor);
                 OUT.screenPos = ComputeScreenPos(OUT.positionHCS);
+                OUT.uv1 = IN.uv1.xy;
                 return OUT;
             }
 
             float4 ComputeFragment(Varyings IN) : SV_Target
             {
-                float4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv0).rgba;
-                clip(color.a - _CutoffThreshold);
+                float4 mainColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv0);
+                float4 faceColor = SAMPLE_TEXTURE2D(_FaceTex, sampler_FaceTex, IN.uv1);
+                float4 finalColor = lerp(mainColor, faceColor, faceColor.a);
+
+
+                clip(finalColor.a - _CutoffThreshold);
                 float3 normalWS = GetNormalWS(_NormalTex, sampler_NormalTex, IN.normalWS, IN.tangentWS, IN.uv0, _NormalStrength);
 
-                float4 result = ComputeToonSurface(color,
-                                   _ShadowColor,
-                                   normalWS,
-                                   IN.positionWS,
-                                   _MainLightInfluence,
-                                   _AdditionalLightsInfluence,
-                                   _ColorRampTex,
-                                   sampler_ColorRampTex,
-                                   _AddLightRampTex,
-                                   sampler_AddLightRampTex);
+                float4 result = ComputeToonSurface(finalColor,
+                _ShadowColor,
+                normalWS,
+                IN.positionWS,
+                _MainLightInfluence,
+                _AdditionalLightsInfluence,
+                _ColorRampTex,
+                sampler_ColorRampTex,
+                _AddLightRampTex,
+                sampler_AddLightRampTex);
 
                 #ifdef _ANTIOCCLUSION_ON
                 float dither = Dithering(IN.positionHCS.xy);

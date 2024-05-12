@@ -6,5 +6,6 @@
         public const string OnBallAddHitCount = "OnBallAddHitCount";
         public const string OnCourtChange = "OnCourtChange";
         public const string OnScoreChanged = "OnScoreChanged";
+        public const string OnBothSideReady = "OnBothSideReady";
     }
 }

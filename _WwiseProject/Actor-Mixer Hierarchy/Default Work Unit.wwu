@@ -58,6 +58,11 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Score_2" ID="{43D6AF36-4C6E-4289-99EA-D7C797164B0C}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0.0130558428128232"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.0130558428128232"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Score_2.wav</AudioFile>
 							<MediaIDList>
@@ -73,7 +78,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-29</Value>
+								<Value>-18</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>

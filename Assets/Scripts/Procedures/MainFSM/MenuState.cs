@@ -11,6 +11,8 @@ namespace Procedures.MainFSM {
         public MenuState(StateMachine parentStateMachine, GameObject owner) : base(parentStateMachine, owner) { }
 
         public override void OnEnter() {
+            Game.UI.ActivateUI(UINames.Menu);
+
             AkSoundEngine.SetState("BGM", "Menu");
 
             m_OnStartBtnClickedEventHandlerId = Game.Event.Subscribe(EventNames.OnStartBtnClicked, OnStartBtnClicked);
@@ -21,6 +23,7 @@ namespace Procedures.MainFSM {
         public override void OnUpdate() { }
 
         public override void OnExit() {
+            Game.UI.UnactivateUI(UINames.Menu);
             Game.Event.Unsubscribe(EventNames.OnStartBtnClicked, m_OnStartBtnClickedEventHandlerId);
             Game.Event.Unsubscribe(EventNames.OnExitBtnClicked, m_OnExitBtnClickedEventHandlerId);
         }
