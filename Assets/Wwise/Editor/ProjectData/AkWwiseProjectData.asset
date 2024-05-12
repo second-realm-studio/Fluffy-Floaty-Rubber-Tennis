@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 69665c5f750cce4da0855ec024357721
     GuidInternal: 
-    m_lastTime: -8584863822491738982
+    m_lastTime: -8584861716301363760
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 45d796af69a8a94cbe50e35e1f30cf3e
     GuidInternal: 
-    m_lastTime: -8584863822492826690
+    m_lastTime: -8584861716301443831
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 20fc3c5e77233742be38c02c78b8c019
     GuidInternal: 
-    m_lastTime: -8584862384010223638
+    m_lastTime: -8584861714675918550
     List:
     - name: MainSoundBank
       guid: c4c09c0d8607f0479e62428f8c3c5cc8
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 0444d070c7e5fa429b6e059017d1d28d
     GuidInternal: 
-    m_lastTime: -8584862381204044917
+    m_lastTime: -8584861714678954818
     List:
     - name: BGM
       guid: 2f3d94a6da6d554ea4919a35e18724eb
@@ -151,8 +151,8 @@ MonoBehaviour:
         guid: 994c203e8ac9514a8d19bbbc4224255e
       Path: Events\Default Work Unit\BGM\Play_BGM
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Set_State_BGM_Combat
       guid: 98aefa2457444340b34f279ac719a7c5
       id: 999787593
@@ -334,7 +334,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: e0f6ec0e2f307944b43114428e9787a3
     GuidInternal: 
-    m_lastTime: -8584863822492696149
+    m_lastTime: -8584861716301463851
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -348,7 +348,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: cf5a95cec8144848a6aa9a376c7d90fb
     GuidInternal: 
-    m_lastTime: -8584862394185385212
+    m_lastTime: -8584861714675908545
     List:
     - name: BGM
       guid: ff4e6a19d9d3c24291dfc2cf91a8c417
@@ -510,7 +510,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: b68d912f49506f419191ea46971ccc1a
     GuidInternal: 
-    m_lastTime: -8584863822492566048
+    m_lastTime: -8584861716301383778
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -524,7 +524,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: f28b9339d6bb5d41a66597780a9e686b
     GuidInternal: 
-    m_lastTime: -8584863822492120650
+    m_lastTime: -8584861716301373767
     List: []
   ExpandedFileSystemItemIds: 110000001200000013000000180000001c0000001d000000
   ExpandedWaapiItemIds: 
