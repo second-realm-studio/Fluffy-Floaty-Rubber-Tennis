@@ -90,6 +90,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="SpeedBoost" ID="{45BBC8B2-DF82-4687-B1CC-677C3967858F}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.24715137875279"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>SpeedBoost.wav</AudioFile>
 							<MediaIDList>
@@ -112,6 +116,12 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Hit_1" ID="{EF0CF8D6-052C-401F-92CF-8122AC2A530E}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.00214132762312635"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.437901498929336"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.597430406852248"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Hit_1.wav</AudioFile>
 							<MediaIDList>
@@ -135,9 +145,9 @@
 					<ChildrenList>
 						<AudioFileSource Name="Swings" ID="{6E6EEE35-8B41-4B9C-95EE-98BF3DCA92D9}">
 							<PropertyList>
-								<Property Name="LoopEnd" Type="Real64" Value="0.658582886509695"/>
+								<Property Name="LoopEnd" Type="Real64" Value="0.295768378778033"/>
 								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-								<Property Name="TrimEnd" Type="Real64" Value="0.710325630264156"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.304228730849178"/>
 							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Swings.wav</AudioFile>
@@ -207,8 +217,8 @@
 						<AudioFileSource Name="Swing_2" ID="{DB4601D9-DEEE-4DB9-AFD7-B62689D60EF1}">
 							<PropertyList>
 								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-								<Property Name="TrimBegin" Type="Real64" Value="0.738626695217702"/>
-								<Property Name="TrimEnd" Type="Real64" Value="1.71050392576729"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.998749526032344"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.43799429348529"/>
 							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Swing_2.wav</AudioFile>
