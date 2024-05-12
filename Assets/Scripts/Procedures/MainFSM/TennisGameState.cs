@@ -6,49 +6,62 @@ using XiheFramework.Runtime;
 
 namespace Procedures.MainFSM {
     public class TennisGameState : State<GameObject> {
-        private int m_CurrentScoreOffset;
         private int m_WinScore;
         private uint m_LeftPlayerEntityId;
         private uint m_RightPlayerEntityId;
-        
+
         public TennisGameState(StateMachine parentStateMachine, GameObject owner) : base(parentStateMachine, owner) { }
 
         public override void OnEnter() {
-            var leftPlayerAnimalType = Game.Blackboard.GetData<string>(BlackboardDataNames.PlayerCharacterType(0));
-            leftPlayerAnimalType = $"{nameof(TennisPlayerEntity)}_{leftPlayerAnimalType}";
-            var rightPlayerAnimalType = Game.Blackboard.GetData<string>(BlackboardDataNames.PlayerCharacterType(1));
-            rightPlayerAnimalType = $"{nameof(TennisPlayerEntity)}_{rightPlayerAnimalType}";
+            Game.Event.Subscribe(EventNames.OnScoreChanged, OnScoreChanged);
 
-            var leftEntity = Game.Entity.InstantiateEntity<TennisPlayerEntity>(leftPlayerAnimalType, 0, false, 0);
-            m_LeftPlayerEntityId = leftEntity.EntityId;
-            var spawnPosLeft = Game.Config.FetchConfig<Vector3>(ConfigNames.PlayerSpawnPositionLeft);
+            //bgm
+            AkSoundEngine.SetState("BGM", "Combat");
+            AkSoundEngine.SetState("BGM_Combat", "Enter");
+            AkSoundEngine.SetState("BGM_Combat", "Main");
 
-            var rightEntity = Game.Entity.InstantiateEntity<TennisPlayerEntity>(rightPlayerAnimalType, 0, false, 0);
-            m_RightPlayerEntityId = rightEntity.EntityId;
-            var spawnPosRight = Game.Config.FetchConfig<Vector3>(ConfigNames.PlayerSpawnPositionRight);
+            var leftPlayerAnimalType = Game.Blackboard.GetData<AnimalType>(BlackboardDataNames.PlayerCharacterType(0));
+            var rightPlayerAnimalType = Game.Blackboard.GetData<AnimalType>(BlackboardDataNames.PlayerCharacterType(1));
 
-            leftEntity.transform.position = spawnPosLeft;
-            rightEntity.transform.position = spawnPosRight;
+            var left = Game.Entity.InstantiateEntity<TennisPlayerEntity>($"TennisPlayerEntity_{leftPlayerAnimalType.ToString()}");
+            m_LeftPlayerEntityId = left.EntityId;
+            left.transform.position = new Vector3(-10, -2, 0);
+            left.inputId = 0;
 
-            leftEntity.rigidBody.velocity = Vector3.zero;
-            rightEntity.rigidBody.velocity = Vector3.zero;
+            var right = Game.Entity.InstantiateEntity<TennisPlayerEntity>($"TennisPlayerEntity_{rightPlayerAnimalType.ToString()}");
+            m_RightPlayerEntityId = right.EntityId;
+            right.transform.position = new Vector3(10, -2, 0);
+            right.inputId = 1;
 
-            m_WinScore = Game.Config.FetchConfig<int>(ConfigNames.GameWinScore);
+            // m_WinScore = Game.Config.FetchConfig<int>(ConfigNames.GameWinScore);
+            m_WinScore = 5;
         }
 
-        public override void OnUpdate() {
-            if (m_CurrentScoreOffset <= -m_WinScore) {
-                //left win
-            }
-
-            if (m_CurrentScoreOffset >= m_WinScore) {
-                //right win
-            }
-        }
+        public override void OnUpdate() { }
 
         public override void OnExit() {
             Game.Entity.DestroyEntity(m_LeftPlayerEntityId);
             Game.Entity.DestroyEntity(m_RightPlayerEntityId);
+        }
+
+        private void OnScoreChanged(object sender, object e) {
+            if (sender is not uint scorerId) {
+                return;
+            }
+
+            if (e is not int currentScoreOffset) {
+                return;
+            }
+
+            if (currentScoreOffset <= -m_WinScore) {
+                //left win
+                Game.LogicTime.SetGlobalTimeScaleInSecond(0.2f, 4f, true);
+            }
+
+            if (currentScoreOffset >= m_WinScore) {
+                //right win
+                Game.LogicTime.SetGlobalTimeScaleInSecond(0.2f, 4f, true);
+            }
         }
     }
 }

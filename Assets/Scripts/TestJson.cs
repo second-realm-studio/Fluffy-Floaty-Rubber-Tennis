@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using UnityEditor;
 using UnityEngine;
+using XiheFramework.Core.Config;
 
 public class TestJson : MonoBehaviour {
     // Start is called before the first frame update
@@ -9,16 +11,18 @@ public class TestJson : MonoBehaviour {
         var jsonSetting = new JsonSerializerSettings {
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
         };
-        var myVector3s = new List<Vector3> {
-            new Vector3(1, 2, 3),
-            new Vector3(4, 5, 6),
-            new Vector3(7, 8, 9)
+
+        ConfigData newData = new ConfigData {
+            entries = new List<ConfigEntry> {
+                new ConfigEntry { path = "exampleKey1", type = ConfigType.String, value = "Hello" },
+                new ConfigEntry { path = "examplePath2", type = ConfigType.Vector3, value = JsonConvert.SerializeObject(new Vector3(1, 2, 3), Formatting.Indented, jsonSetting) },
+            }
         };
-        var json = JsonConvert.SerializeObject(myVector3s, Formatting.Indented, jsonSetting); // To Serialise
-        var myVec3s = JsonConvert.DeserializeObject<List<Vector3>>(json); // To Deserialise
-        Debug.Log(myVec3s[2]);
+
+        string newJson = JsonUtility.ToJson(newData, true);
+
         //save /assets/test.json
-        System.IO.File.WriteAllText(Application.dataPath + "/test.json", json);
+        System.IO.File.WriteAllText(Application.dataPath + "/test.json", newJson);
     }
 
     // Update is called once per frame
