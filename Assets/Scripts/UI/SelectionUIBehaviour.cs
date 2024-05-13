@@ -217,7 +217,6 @@ namespace UI {
         }
 
         private void UpdateCamera() {
-            Debug.Log(m_P1SelectedAnimalType);
             m_CameraP1.transform.position = Vector3.Lerp(m_CameraP1.transform.position,
                 new Vector3((float)(int)m_P1SelectedAnimalType, m_CameraP2.transform.position.y, m_CameraP2.transform.position.z), Time.deltaTime * 5);
             m_CameraP2.transform.position = Vector3.Lerp(m_CameraP2.transform.position,

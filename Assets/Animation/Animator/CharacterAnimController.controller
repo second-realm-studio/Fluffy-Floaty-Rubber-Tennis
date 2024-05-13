@@ -10,11 +10,11 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 4597035308176545339}
-    m_Position: {x: 350, y: 230, z: 0}
+    m_State: {fileID: -3879841571087834673}
+    m_Position: {x: 140, y: 200, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -2708552725167553652}
-    m_Position: {x: 350, y: 330, z: 0}
+    m_State: {fileID: 4714386167856535964}
+    m_Position: {x: 140, y: 270, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -24,15 +24,15 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 370, y: 140, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 4597035308176545339}
---- !u!1102 &-2708552725167553652
+  m_DefaultState: {fileID: -3879841571087834673}
+--- !u!1102 &-3879841571087834673
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Select_Anim
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -45,7 +45,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 336510b8f61e5b04ba72a745af9d5a18,
+  m_Motion: {fileID: -1422011007694221501, guid: 4ee4e9ffdaa70214b9838ccb2d9c6fe9,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -82,18 +82,18 @@ AnimatorController:
     m_Behaviours: []
     m_BlendingMode: 1
     m_SyncedLayerIndex: 0
-    m_DefaultWeight: 0
+    m_DefaultWeight: 1
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &4597035308176545339
+--- !u!1102 &4714386167856535964
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle_Anim
+  m_Name: Selected
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -106,7 +106,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 82563f9070f9a0c45a89f52fbb410be0,
+  m_Motion: {fileID: 4065910277313914012, guid: 4ee4e9ffdaa70214b9838ccb2d9c6fe9,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
