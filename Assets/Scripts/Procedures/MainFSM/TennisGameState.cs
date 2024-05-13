@@ -44,13 +44,13 @@ namespace Procedures.MainFSM {
 
             var left = Game.Entity.InstantiateEntity<TennisPlayerEntity>($"TennisPlayerEntity_{leftPlayerAnimalType.ToString()}");
             m_LeftPlayerEntityId = left.EntityId;
-            left.transform.position = new Vector3(-10, -2, 0);
+            left.transform.position = new Vector3(-87, -18, 0);
             left.inputId = 0;
             left.isRightSide = false;
 
             var right = Game.Entity.InstantiateEntity<TennisPlayerEntity>($"TennisPlayerEntity_{rightPlayerAnimalType.ToString()}");
             m_RightPlayerEntityId = right.EntityId;
-            right.transform.position = new Vector3(10, -2, 0);
+            right.transform.position = new Vector3(87, -18, 0);
             right.inputId = 1;
             right.isRightSide = true;
 

@@ -12,6 +12,13 @@ namespace Actions {
         public float chargeSpeed = 0.5f;
 
         private float m_SwingPower;
+        private static readonly int SwingHolding = Animator.StringToHash("SwingHolding");
+
+        protected override void OnActionInit() {
+            base.OnActionInit();
+
+            owner.animator.SetBool(SwingHolding, true);
+        }
 
         protected override void OnActionUpdate() {
             // var chargeSpeed = Game.Config.FetchConfig<float>(ConfigNames.PlayerSwingChargeSpeed);
@@ -21,11 +28,15 @@ namespace Actions {
             var aimDirH = Game.Input(owner.inputId).GetAxis(InputNames.AimHorizontal);
             var aimDirV = Game.Input(owner.inputId).GetAxis(InputNames.AimVertical);
             var aimDir = new Vector2(aimDirH, aimDirV);
+            if (aimDir.magnitude > 0.1f) {
+                // owner.armRTransform.rotation = Quaternion.LookRotation(Vector3.back, -aimDir.ToVector3(V2ToV3Type.XY));
+                owner.armRTransform.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, -aimDir, Vector3.forward));
+            }
 
             if (Game.Input(owner.inputId).GetButtonDown(InputNames.SwingRelease)) {
                 ChangeAction(PlayerActionNames.PlayerSwingRelease,
                     new KeyValuePair<string, object>(ActionArgumentNames.SwingDirection, aimDir.normalized),
-                    new KeyValuePair<string, object>(ActionArgumentNames.SwingPower, m_SwingPower));
+                    new KeyValuePair<string, object>(ActionArgumentNames.SwingPower01, m_SwingPower));
             }
 
             if (!Game.Input(owner.inputId).GetButton(InputNames.SwingHold)) {

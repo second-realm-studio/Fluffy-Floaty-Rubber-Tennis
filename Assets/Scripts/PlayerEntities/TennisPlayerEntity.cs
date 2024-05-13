@@ -24,6 +24,8 @@ namespace PlayerEntities {
         public Animator animator;
         public CapsuleCollider capsuleCollider;
         public Rigidbody rigidBody;
+        public Transform armRTransform;
+        public Transform racketTransform;
 
 #if UNITY_EDITOR
         private void OnValidate() {
@@ -40,9 +42,13 @@ namespace PlayerEntities {
             rigidBody.drag = airDrag;
             rigidBody.angularDrag = airDrag * 5f;
             Game.Action.ChangeAction(EntityId, PlayerActionNames.PlayerIdle);
+            var scale = 1.05f * swingRadius / 10f;
+            racketTransform.localScale = new Vector3(scale, scale, scale);
         }
 
         private void OnDrawGizmos() {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, swingRadius);
             Gizmos.color = Color.blue;
             var aimDir = new Vector2(Game.Input(inputId).GetAxis(InputNames.AimHorizontal), Game.Input(inputId).GetAxis(InputNames.AimVertical));
             Gizmos.DrawLine(transform.position, transform.position + aimDir.ToVector3(V2ToV3Type.XY) * 2f);

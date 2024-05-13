@@ -13,6 +13,8 @@ namespace Actions {
     public class PlayerSwingReleaseAction : TennisPlayerActionEntityBase {
         public override string EntityAddressName => PlayerActionNames.PlayerSwingRelease;
 
+        public float afterSwingDuration = 0.5f;
+
         public Material hitMaterial;
         public LayerMask hitLayerMask;
 
@@ -20,15 +22,19 @@ namespace Actions {
         public AK.Wwise.Event hitBallSound;
         public AK.Wwise.Event hitObstacleSound;
 
+        private Vector2 m_SwingDir;
+        private float m_AfterSwingTimer;
+
+
         protected override void OnActionInit() {
             base.OnActionInit();
             swingSound.Post(owner.gameObject);
 
-            var swingDir = FetchArgument<Vector2>(ActionArgumentNames.SwingDirection);
-            var swingPower = FetchArgument<float>(ActionArgumentNames.SwingPower);
+            m_SwingDir = FetchArgument<Vector2>(ActionArgumentNames.SwingDirection);
+            var swingCharge01 = FetchArgument<float>(ActionArgumentNames.SwingPower01);
 
-            var isHit = Physics.SphereCast(owner.transform.position - swingDir.ToVector3(V2ToV3Type.XY) * owner.swingRadius, owner.swingRadius,
-                swingDir.ToVector3(V2ToV3Type.XY), out var sphereHit, owner.swingRadius, hitLayerMask, QueryTriggerInteraction.Ignore);
+            var isHit = Physics.SphereCast(owner.transform.position - m_SwingDir.ToVector3(V2ToV3Type.XY) * owner.swingRadius, owner.swingRadius,
+                m_SwingDir.ToVector3(V2ToV3Type.XY), out var sphereHit, owner.swingRadius, hitLayerMask, QueryTriggerInteraction.Ignore);
 
             if (isHit) {
                 var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -40,7 +46,7 @@ namespace Actions {
                 var deltaDir = sphereHit.point - owner.transform.position;
                 var distance = Vector3.Distance(owner.transform.position, sphereHit.point);
                 distance = Mathf.Clamp(distance, 0, owner.swingRadius);
-                var force = swingDir.ToVector3(V2ToV3Type.XY) * (owner.power * swingPower);
+                var force = m_SwingDir.ToVector3(V2ToV3Type.XY) * (owner.power * swingCharge01);
 
                 var soundPlayed = false;
                 var rb = sphereHit.collider.GetComponentInParent<Rigidbody>();
@@ -51,7 +57,7 @@ namespace Actions {
                         Game.Event.Invoke(EventNames.OnBallHit, owner.EntityId);
                         hitBallSound.Post(owner.gameObject);
                         soundPlayed = true;
-                        var dirDotBall = Vector3.Dot(swingDir.ToVector3(V2ToV3Type.XY), rb.velocity.normalized);
+                        var dirDotBall = Vector3.Dot(m_SwingDir.ToVector3(V2ToV3Type.XY), rb.velocity.normalized);
                         dirDotBall = dirDotBall / 2 + 0.5f;
                         rb.velocity *= dirDotBall;
                         rb.AddForceAtPosition(force, sphereHit.point, ForceMode.Impulse);
@@ -65,7 +71,7 @@ namespace Actions {
                     hitObstacleSound.Post(owner.gameObject);
                 }
 
-                var dirDot = Vector3.Dot(swingDir.ToVector3(V2ToV3Type.XY), -owner.rigidBody.velocity.normalized);
+                var dirDot = Vector3.Dot(m_SwingDir.ToVector3(V2ToV3Type.XY), -owner.rigidBody.velocity.normalized);
                 dirDot = dirDot / 2 + 0.5f;
                 if (Physics.Raycast(sphereHit.point, -deltaDir, out var hitOnOwner, owner.swingRadius)) {
                     owner.rigidBody.velocity *= dirDot;
@@ -77,12 +83,23 @@ namespace Actions {
                 }
             }
             else {
-                owner.rigidBody.AddForceAtPosition(-swingDir * 0.5f, owner.transform.position, ForceMode.VelocityChange);
+                //push air
+                owner.rigidBody.AddForceAtPosition(-m_SwingDir, owner.transform.position, ForceMode.Impulse);
             }
+
+            owner.armRTransform.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, m_SwingDir, Vector3.forward));
         }
 
         protected override void OnActionUpdate() {
-            ChangeAction(PlayerActionNames.PlayerIdle);
+            m_AfterSwingTimer += ScaledDeltaTime;
+            if (m_AfterSwingTimer >= afterSwingDuration) {
+                ChangeAction(PlayerActionNames.PlayerIdle);
+            }
+        }
+
+        public override void OnLateUpdateCallback() {
+            base.OnLateUpdateCallback();
+            owner.armRTransform.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, m_SwingDir, Vector3.forward));
         }
 
         protected override void OnActionExit() { }

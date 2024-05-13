@@ -6,23 +6,23 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerAvatarMask
+  m_Name: Animal_AvatorMask
   m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Elements:
   - m_Path: 
     m_Weight: 1
   - m_Path: Armature
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Spine
     m_Weight: 1
   - m_Path: Armature/Spine/Arm_L
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Spine/Arm_L/Arm_L_end
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Spine/Arm_R
     m_Weight: 0
   - m_Path: Armature/Spine/Arm_R/Arm_R_end
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Spine/Head
     m_Weight: 1
   - m_Path: Armature/Spine/Head/Ear_L
@@ -33,7 +33,5 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature/Spine/Head/Ear_R/Ear_R_end
     m_Weight: 1
-  - m_Path: CharacterGrey
-    m_Weight: 0
-  - m_Path: Empty
+  - m_Path: Cat
     m_Weight: 0
