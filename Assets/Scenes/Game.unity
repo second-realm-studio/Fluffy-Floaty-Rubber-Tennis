@@ -814,7 +814,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622384962}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1554,11 +1554,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -987.4
       objectReference: {fileID: 0}
-    - target: {fileID: 3581896047938200567, guid: 72ef72439fba2ba428ba3f95fddc332b,
-        type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5982601000401640121, guid: 72ef72439fba2ba428ba3f95fddc332b,
         type: 3}
       propertyPath: m_Name
@@ -1568,11 +1563,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8291673203222355487, guid: 72ef72439fba2ba428ba3f95fddc332b,
-        type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8291673203222355487, guid: 72ef72439fba2ba428ba3f95fddc332b,
         type: 3}
@@ -1641,7 +1631,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230458960}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
