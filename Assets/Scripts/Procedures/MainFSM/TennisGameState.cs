@@ -15,6 +15,9 @@ namespace Procedures.MainFSM {
         private uint m_LastHitPlayerId;
         private int m_HitCount;
 
+        private string m_OnScoreChangedEventHandlerId;
+        private string m_OnBallAddHitCountEventHandlerId;
+
         public TennisGameState(StateMachine parentStateMachine, GameObject owner) : base(parentStateMachine, owner) { }
 
         public override void OnEnter() {
@@ -24,8 +27,8 @@ namespace Procedures.MainFSM {
 
             Game.UI.ActivateUI(UINames.GameHud);
 
-            Game.Event.Subscribe(Game.Blackboard.OnDataChangeEventName, OnScoreChanged);
-            Game.Event.Subscribe(EventNames.OnBallAddHitCount, OnBallAddHitCount);
+            m_OnScoreChangedEventHandlerId = Game.Event.Subscribe(Game.Blackboard.OnDataChangeEventName, OnScoreChanged);
+            m_OnBallAddHitCountEventHandlerId = Game.Event.Subscribe(EventNames.OnBallAddHitCount, OnBallAddHitCount);
 
             //input
             Game.Input(0).controllers.maps.SetMapsEnabled(true, InputNames.CategoryGame);
@@ -63,6 +66,8 @@ namespace Procedures.MainFSM {
         public override void OnUpdate() { }
 
         public override void OnExit() {
+            Game.Event.Unsubscribe(EventNames.OnScoreChanged, m_OnScoreChangedEventHandlerId);
+            Game.Event.Unsubscribe(EventNames.OnBallAddHitCount, m_OnBallAddHitCountEventHandlerId);
             Game.UI.UnactivateUI(UINames.GameHud);
             Game.Entity.DestroyEntity(m_LeftPlayerEntityId);
             Game.Entity.DestroyEntity(m_RightPlayerEntityId);
