@@ -15,15 +15,15 @@ public class CourtTrigger : MonoBehaviour {
             Game.Event.Invoke(EventNames.OnCourtChange, isRightSide, null);
 
 #if UNITY_EDITOR
-            GetComponent<Renderer>().enabled = true;
-            GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.7f);
+            GetComponent<Renderer>().enabled = false;
 #endif
         }
     }
 
     private void OnTriggerExit(Collider other) {
 #if UNITY_EDITOR
-        GetComponent<Renderer>().enabled = false;
+        GetComponent<Renderer>().enabled = true;
+        GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.7f);
 #endif
     }
 }
