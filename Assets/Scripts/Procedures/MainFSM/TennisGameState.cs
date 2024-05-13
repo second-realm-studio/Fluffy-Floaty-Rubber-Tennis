@@ -66,7 +66,7 @@ namespace Procedures.MainFSM {
         public override void OnUpdate() { }
 
         public override void OnExit() {
-            Game.Event.Unsubscribe(EventNames.OnScoreChanged, m_OnScoreChangedEventHandlerId);
+            Game.Event.Unsubscribe(Game.Blackboard.OnDataChangeEventName, m_OnScoreChangedEventHandlerId);
             Game.Event.Unsubscribe(EventNames.OnBallAddHitCount, m_OnBallAddHitCountEventHandlerId);
             Game.UI.UnactivateUI(UINames.GameHud);
             Game.Entity.DestroyEntity(m_LeftPlayerEntityId);

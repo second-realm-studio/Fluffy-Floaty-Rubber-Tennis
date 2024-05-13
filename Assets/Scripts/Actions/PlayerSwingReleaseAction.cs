@@ -51,7 +51,9 @@ namespace Actions {
                         Game.Event.Invoke(EventNames.OnBallHit, owner.EntityId);
                         hitBallSound.Post(owner.gameObject);
                         soundPlayed = true;
-                        rb.velocity = Vector3.zero;
+                        var dirDotBall = Vector3.Dot(swingDir.ToVector3(V2ToV3Type.XY), rb.velocity.normalized);
+                        dirDotBall = dirDotBall / 2 + 0.5f;
+                        rb.velocity *= dirDotBall;
                         rb.AddForceAtPosition(force, sphereHit.point, ForceMode.Impulse);
                     }
                     else {
