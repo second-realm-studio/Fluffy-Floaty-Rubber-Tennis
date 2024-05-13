@@ -14,11 +14,16 @@ public class CourtTrigger : MonoBehaviour {
         if (ballLayer.Includes(other.gameObject.layer)) {
             Game.Event.Invoke(EventNames.OnCourtChange, isRightSide, null);
 
-            GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.4f);
+#if UNITY_EDITOR
+            GetComponent<Renderer>().enabled = true;
+            GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.7f);
+#endif
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.4f);
+#if UNITY_EDITOR
+        GetComponent<Renderer>().enabled = false;
+#endif
     }
 }

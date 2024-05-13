@@ -278,8 +278,8 @@
 									<Modifier Name="" ID="{7FCA155C-40B9-4536-84CF-4AFD5BC1EAF2}">
 										<PropertyList>
 											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="200"/>
-											<Property Name="Min" Type="Real64" Value="-200"/>
+											<Property Name="Max" Type="Real64" Value="400"/>
+											<Property Name="Min" Type="Real64" Value="-400"/>
 										</PropertyList>
 									</Modifier>
 								</ModifierInfo>
@@ -367,9 +367,19 @@
 						</Sound>
 						<Sound Name="494928__yummy9987__hit-on-metal" ID="{B5414054-DC78-48FD-B479-338FD38A269E}" ShortID="50984881">
 							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-580</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-14</Value>
+										<Value>-13</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -384,7 +394,7 @@
 							<ChildrenList>
 								<AudioFileSource Name="494928__yummy9987__hit-on-metal" ID="{B95AA873-B175-4D71-A3B5-43F7439D376F}">
 									<PropertyList>
-										<Property Name="FadeOutDuration" Type="Real64" Value="0.209733798690106"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.255000086177179"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 										<Property Name="TrimBegin" Type="Real64" Value="0.0784615649775945"/>
 										<Property Name="TrimEnd" Type="Real64" Value="0.37420130989314"/>

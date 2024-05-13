@@ -1,5 +1,6 @@
 ﻿using Constants;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using XiheFramework.Core.FSM;
 using XiheFramework.Runtime;
 
@@ -13,7 +14,11 @@ namespace Procedures.MainFSM {
             Game.UI.ActivateUI(UINames.GameOver);
         }
 
-        public override void OnUpdate() { }
+        public override void OnUpdate() {
+            if (Game.Input(0).GetButtonDown(InputNames.UISubmit) || Game.Input(1).GetButtonDown(InputNames.UISubmit)) {
+                Game.Scene.LoadSceneAsync(SceneNames.Menu, LoadSceneMode.Single, true, (scene) => { ChangeState(GameLoopStatesNames.Menu); });
+            }
+        }
 
         public override void OnExit() {
             Game.UI.UnactivateUI(UINames.GameOver);

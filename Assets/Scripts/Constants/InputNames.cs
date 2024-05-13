@@ -17,6 +17,11 @@
         public const string UISubmit = "UISubmit";
         public const string UICancel = "UICancel";
 
+        public const string UILeft = "UILeft";
+        public const string UIRight = "UIRight";
+        public const string UIUp = "UIUp";
+        public const string UIDown = "UIDown";
+
         //dev
         public const string OpenDevConsole = "OpenDevConsole";
         public const string ExecuteCommand = "ExecuteCommand";

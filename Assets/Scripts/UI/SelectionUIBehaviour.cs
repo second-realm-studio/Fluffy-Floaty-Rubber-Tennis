@@ -33,9 +33,6 @@ namespace UI {
         private AnimalType m_P1SelectedAnimalType;
         private AnimalType m_P2SelectedAnimalType;
 
-        private float m_P1HorizontalCached;
-        private float m_P2HorizontalCached;
-
         private bool m_P1Ready;
         private bool m_P2Ready;
 
@@ -47,6 +44,12 @@ namespace UI {
         private List<uint> m_DisplayEntityIds = new List<uint>();
 
         protected override void OnActive() {
+            m_P1SelectedAnimalId = 0;
+            m_P2SelectedAnimalId = 0;
+            m_P1Ready = false;
+            m_P2Ready = false;
+            m_BothSideReady = false;
+
             m_CameraP1 = GameObject.Find("SelectionCameraP1").GetComponent<Camera>();
             m_CameraP2 = GameObject.Find("SelectionCameraP2").GetComponent<Camera>();
 
@@ -122,13 +125,13 @@ namespace UI {
             switch (m_P1SelectedAnimalType) {
                 case AnimalType.Sheep:
                     p1PowerSlider.value = 3;
-                    p1RangeSlider.value = 2;
-                    p1WeightSlider.value = 2;
+                    p1RangeSlider.value = 3;
+                    p1WeightSlider.value = 1;
                     break;
                 case AnimalType.Cat:
                     p1PowerSlider.value = 4;
                     p1RangeSlider.value = 2;
-                    p1WeightSlider.value = 3;
+                    p1WeightSlider.value = 2;
                     break;
                 case AnimalType.Goat:
                     p1PowerSlider.value = 5;
@@ -138,18 +141,18 @@ namespace UI {
                     break;
                 case AnimalType.Dog:
                     p1PowerSlider.value = 4;
-                    p1RangeSlider.value = 2;
+                    p1RangeSlider.value = 3;
                     p1WeightSlider.value = 3;
                     break;
                 case AnimalType.Rabbit:
                     p1PowerSlider.value = 3;
                     p1RangeSlider.value = 3;
-                    p1WeightSlider.value = 2;
+                    p1WeightSlider.value = 1;
                     break;
                 case AnimalType.Mouse:
                     p1PowerSlider.value = 2;
-                    p1RangeSlider.value = 1;
-                    p1WeightSlider.value = 1;
+                    p1RangeSlider.value = 5;
+                    p1WeightSlider.value = 0;
                     break;
                 default:
                     p1PowerSlider.value = 0;
@@ -161,13 +164,13 @@ namespace UI {
             switch (m_P2SelectedAnimalType) {
                 case AnimalType.Sheep:
                     p2PowerSlider.value = 3;
-                    p2RangeSlider.value = 2;
-                    p2WeightSlider.value = 2;
+                    p2RangeSlider.value = 3;
+                    p2WeightSlider.value = 1;
                     break;
                 case AnimalType.Cat:
                     p2PowerSlider.value = 4;
                     p2RangeSlider.value = 2;
-                    p2WeightSlider.value = 3;
+                    p2WeightSlider.value = 2;
                     break;
                 case AnimalType.Goat:
                     p2PowerSlider.value = 5;
@@ -176,18 +179,18 @@ namespace UI {
                     break;
                 case AnimalType.Dog:
                     p2PowerSlider.value = 4;
-                    p2RangeSlider.value = 2;
+                    p2RangeSlider.value = 3;
                     p2WeightSlider.value = 3;
                     break;
                 case AnimalType.Rabbit:
                     p2PowerSlider.value = 3;
                     p2RangeSlider.value = 3;
-                    p2WeightSlider.value = 2;
+                    p2WeightSlider.value = 1;
                     break;
                 case AnimalType.Mouse:
                     p2PowerSlider.value = 2;
-                    p2RangeSlider.value = 1;
-                    p2WeightSlider.value = 1;
+                    p2RangeSlider.value = 5;
+                    p2WeightSlider.value = 0;
                     break;
                 default:
                     p2PowerSlider.value = 0;
@@ -214,6 +217,7 @@ namespace UI {
         }
 
         private void UpdateCamera() {
+            Debug.Log(m_P1SelectedAnimalType);
             m_CameraP1.transform.position = Vector3.Lerp(m_CameraP1.transform.position,
                 new Vector3((float)(int)m_P1SelectedAnimalType, m_CameraP2.transform.position.y, m_CameraP2.transform.position.z), Time.deltaTime * 5);
             m_CameraP2.transform.position = Vector3.Lerp(m_CameraP2.transform.position,
@@ -224,50 +228,43 @@ namespace UI {
             foreach (var entityId in m_DisplayEntityIds) {
                 Game.Entity.DestroyEntity(entityId);
             }
+
+            m_CameraP1 = null;
+            m_CameraP2 = null;
+
+            m_DisplayEntityIds.Clear();
         }
 
-        private float m_P1HorizontalThreshold = 0.4f;
-        private float m_P2HorizontalThreshold = 0.4f;
-        private bool m_P1CanChange = true;
-        private bool m_P2CanChange = true;
 
         void UpdateSelectedTypes() {
-            var p1Horizontal = Game.Input(0).GetAxis(InputNames.UIHorizontal);
-            var p2Horizontal = Game.Input(1).GetAxis(InputNames.UIHorizontal);
-
             // Player 1 selection logic
             if (!m_P1Ready) {
-                if (p1Horizontal > m_P1HorizontalThreshold && m_P1CanChange) {
+                if (Game.Input(0).GetButtonDown(InputNames.UIRight)) {
+                    Debug.Log("Right");
                     m_P1SelectedAnimalId++;
-                    m_P1CanChange = false;
-                } else if (p1Horizontal < -m_P1HorizontalThreshold && m_P1CanChange) {
-                    m_P1SelectedAnimalId--;
-                    m_P1CanChange = false;
-                } else if (p1Horizontal >= -0.2f && p1Horizontal <= 0.2f) {
-                    m_P1CanChange = true;
                 }
+                else if (Game.Input(0).GetButtonDown(InputNames.UILeft)) {
+                    m_P1SelectedAnimalId--;
+                }
+
+                Debug.Log(m_P1SelectedAnimalId);
+
                 m_P1SelectedAnimalId = Mathf.Clamp(m_P1SelectedAnimalId, 0, 5);
                 m_P1SelectedAnimalType = (AnimalType)Mathf.FloorToInt(m_P1SelectedAnimalId);
             }
 
             // Player 2 selection logic
             if (!m_P2Ready) {
-                if (p2Horizontal > m_P2HorizontalThreshold && m_P2CanChange) {
+                if (Game.Input(1).GetButtonDown(InputNames.UIRight)) {
                     m_P2SelectedAnimalId++;
-                    m_P2CanChange = false;
-                } else if (p2Horizontal < -m_P2HorizontalThreshold && m_P2CanChange) {
-                    m_P2SelectedAnimalId--;
-                    m_P2CanChange = false;
-                } else if (p2Horizontal >= -0.2f && p2Horizontal <= 0.2f) {
-                    m_P2CanChange = true;
                 }
+                else if (Game.Input(1).GetButtonDown(InputNames.UILeft)) {
+                    m_P2SelectedAnimalId--;
+                }
+
                 m_P2SelectedAnimalId = Mathf.Clamp(m_P2SelectedAnimalId, 0, 5);
                 m_P2SelectedAnimalType = (AnimalType)Mathf.FloorToInt(m_P2SelectedAnimalId);
             }
-
-            m_P1HorizontalCached = p1Horizontal;
-            m_P2HorizontalCached = p2Horizontal;
         }
-
     }
 }

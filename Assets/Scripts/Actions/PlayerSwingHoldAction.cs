@@ -9,12 +9,14 @@ using XiheFramework.Runtime;
 namespace Actions {
     public class PlayerSwingHoldAction : TennisPlayerActionEntityBase {
         public override string EntityAddressName => PlayerActionNames.PlayerSwingHold;
+        public float chargeSpeed = 0.5f;
 
         private float m_SwingPower;
 
         protected override void OnActionUpdate() {
-            var chargeSpeed = Game.Config.FetchConfig<float>(ConfigNames.PlayerSwingChargeSpeed);
+            // var chargeSpeed = Game.Config.FetchConfig<float>(ConfigNames.PlayerSwingChargeSpeed);
             m_SwingPower += ScaledDeltaTime * chargeSpeed;
+            m_SwingPower = Mathf.Clamp(m_SwingPower, 0, 1f);
             //rotate player hand to face opposite direction of the left joystick input
             var aimDirH = Game.Input(owner.inputId).GetAxis(InputNames.AimHorizontal);
             var aimDirV = Game.Input(owner.inputId).GetAxis(InputNames.AimVertical);
@@ -24,6 +26,10 @@ namespace Actions {
                 ChangeAction(PlayerActionNames.PlayerSwingRelease,
                     new KeyValuePair<string, object>(ActionArgumentNames.SwingDirection, aimDir.normalized),
                     new KeyValuePair<string, object>(ActionArgumentNames.SwingPower, m_SwingPower));
+            }
+
+            if (!Game.Input(owner.inputId).GetButton(InputNames.SwingHold)) {
+                ChangeAction(PlayerActionNames.PlayerIdle);
             }
         }
 

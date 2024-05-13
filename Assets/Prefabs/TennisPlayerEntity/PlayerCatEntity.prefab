@@ -50,10 +50,10 @@ MonoBehaviour:
   animalType: 1
   isRightSide: 0
   inputId: 0
-  power: 70
-  mass: 10
-  airDrag: 0.01
-  swingRadius: 8
+  power: 120
+  mass: 3
+  airDrag: 0.02
+  swingRadius: 18
   animator: {fileID: 0}
   capsuleCollider: {fileID: 7949967626886697326}
   rigidBody: {fileID: 856479692733413344}
@@ -100,7 +100,7 @@ Transform:
   m_GameObject: {fileID: 9149784881938698654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5920277345761334137}
@@ -143,17 +143,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: aa5db6e693b98c24993f29a2e14fcd2e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa5db6e693b98c24993f29a2e14fcd2e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa5db6e693b98c24993f29a2e14fcd2e,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa5db6e693b98c24993f29a2e14fcd2e,
         type: 3}
@@ -163,7 +163,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: aa5db6e693b98c24993f29a2e14fcd2e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aa5db6e693b98c24993f29a2e14fcd2e,
         type: 3}

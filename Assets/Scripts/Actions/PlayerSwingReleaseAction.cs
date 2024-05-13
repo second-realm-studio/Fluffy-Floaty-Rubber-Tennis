@@ -3,6 +3,7 @@ using Balls;
 using Constants;
 using PlayerEntities;
 using UnityEngine;
+using UnityEngine.Serialization;
 using XiheFramework.Combat.Action;
 using XiheFramework.Core.Entity;
 using XiheFramework.Core.Utility.Extension;
@@ -16,7 +17,8 @@ namespace Actions {
         public LayerMask hitLayerMask;
 
         public AK.Wwise.Event swingSound;
-        public AK.Wwise.Event hitSound;
+        public AK.Wwise.Event hitBallSound;
+        public AK.Wwise.Event hitObstacleSound;
 
         protected override void OnActionInit() {
             base.OnActionInit();
@@ -25,11 +27,9 @@ namespace Actions {
             var swingDir = FetchArgument<Vector2>(ActionArgumentNames.SwingDirection);
             var swingPower = FetchArgument<float>(ActionArgumentNames.SwingPower);
 
-            var isHit = Physics.SphereCast(owner.transform.position - swingDir.ToVector3(V2ToV3Type.XY) * owner.swingRadius / 2, owner.swingRadius / 2,
-                swingDir.ToVector3(V2ToV3Type.XY), out var sphereHit,
-                owner.swingRadius, hitLayerMask);
+            var isHit = Physics.SphereCast(owner.transform.position - swingDir.ToVector3(V2ToV3Type.XY) * owner.swingRadius, owner.swingRadius,
+                swingDir.ToVector3(V2ToV3Type.XY), out var sphereHit, owner.swingRadius, hitLayerMask, QueryTriggerInteraction.Ignore);
 
-            // var isHit = Physics.Raycast(owner.transform.position, swingDir.ToVector3(V2ToV3Type.XY), out var sphereHit, owner.swingRadius, hitLayerMask);
             if (isHit) {
                 var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 go.transform.position = sphereHit.point;
@@ -40,35 +40,42 @@ namespace Actions {
                 var deltaDir = sphereHit.point - owner.transform.position;
                 var distance = Vector3.Distance(owner.transform.position, sphereHit.point);
                 distance = Mathf.Clamp(distance, 0, owner.swingRadius);
-                var force = swingDir.ToVector3(V2ToV3Type.XY) * (owner.power * (1 + swingPower));
+                var force = swingDir.ToVector3(V2ToV3Type.XY) * (owner.power * swingPower);
 
-                var rb = sphereHit.collider.GetComponent<Rigidbody>();
+                var soundPlayed = false;
+                var rb = sphereHit.collider.GetComponentInParent<Rigidbody>();
                 if (rb != null) {
-                    //replace 0 to distance
-                    hitSound.Post(owner.gameObject);
-                    var originForce = rb.velocity.magnitude * 5f;
-                    rb.velocity = Vector3.zero;
-                    rb.AddForceAtPosition((originForce + owner.power) * swingDir.ToVector3(V2ToV3Type.XY), sphereHit.point, ForceMode.Impulse);
                     if (rb.GetComponent<GeneralBallEntity>() != null) {
                         //is a ball
                         Game.LogicTime.SetGlobalTimeScaleInSecond(0.05f, 0.75f, true);
                         Game.Event.Invoke(EventNames.OnBallHit, owner.EntityId);
+                        hitBallSound.Post(owner.gameObject);
+                        soundPlayed = true;
+                        rb.velocity = Vector3.zero;
+                        rb.AddForceAtPosition(force, sphereHit.point, ForceMode.Impulse);
+                    }
+                    else {
+                        rb.AddForceAtPosition(force, sphereHit.point, ForceMode.Impulse);
                     }
                 }
 
+                if (!soundPlayed) {
+                    hitObstacleSound.Post(owner.gameObject);
+                }
+
+                var dirDot = Vector3.Dot(swingDir.ToVector3(V2ToV3Type.XY), -owner.rigidBody.velocity.normalized);
+                dirDot = dirDot / 2 + 0.5f;
                 if (Physics.Raycast(sphereHit.point, -deltaDir, out var hitOnOwner, owner.swingRadius)) {
-                    var originForce = owner.rigidBody.velocity.magnitude;
-                    owner.rigidBody.velocity = Vector3.zero;
-                    owner.rigidBody.AddForceAtPosition(-(force + originForce * force.normalized), hitOnOwner.point, ForceMode.Impulse);
+                    owner.rigidBody.velocity *= dirDot;
+                    owner.rigidBody.AddForceAtPosition(-(force), hitOnOwner.point, ForceMode.Impulse);
                 }
                 else {
-                    var originForce = owner.rigidBody.velocity.magnitude;
-                    owner.rigidBody.velocity = Vector3.zero;
-                    owner.rigidBody.AddForceAtPosition(-(force + originForce * force.normalized), owner.transform.position, ForceMode.Impulse);
+                    owner.rigidBody.velocity *= dirDot;
+                    owner.rigidBody.AddForceAtPosition(-(force), owner.transform.position, ForceMode.Impulse);
                 }
             }
             else {
-                owner.rigidBody.AddForceAtPosition(-swingDir * 0.2f, owner.transform.position, ForceMode.Impulse);
+                owner.rigidBody.AddForceAtPosition(-swingDir * 0.5f, owner.transform.position, ForceMode.VelocityChange);
             }
         }
 

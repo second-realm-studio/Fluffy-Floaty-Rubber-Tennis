@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="534561221" Type="User" Language="SFX" Hash="{E92A7705-D22A-D675-6864-DFC3A333035B}">
+		<SoundBank Id="534561221" Type="User" Language="SFX" Hash="{02D0EE15-222C-D75E-840E-8CB6C7512CA8}">
 			<ShortName>MainSoundBank</ShortName>
 			<Path>MainSoundBank.bnk</Path>
 			<Media>
@@ -20,6 +20,10 @@
 				<File Id="140665588" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>GameEndYay.wav</ShortName>
 					<CachePath>SFX/GameEndYay_818F3B66.wem</CachePath>
+				</File>
+				<File Id="255905769" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>57918__denalwa__metal-pole.wav</ShortName>
+					<CachePath>SFX/57918__denalwa__metal-pole_299E9208.wem</CachePath>
 				</File>
 				<File Id="283284255" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Hit_1.wav</ShortName>
@@ -103,9 +107,9 @@
 						<MediaRef Id="283284255"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3306622211" Name="Play_Hit_Obstacle" DurationType="OneShot" DurationMin="0.10134436" DurationMax="0.10134436">
+				<Event Id="3306622211" Name="Play_Hit_Obstacle" DurationType="OneShot" DurationMin="0.19025183" DurationMax="0.30200595">
 					<MediaRefs>
-						<MediaRef Id="283284255"/>
+						<MediaRef Id="255905769"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3240049516" Name="Play_Score" DurationType="OneShot" DurationMin="0.61819416" DurationMax="0.61819416">
@@ -210,5 +214,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{FD46B80E-CD4B-1563-ED89-9B7C342CE89A}</FileHash>
+	<FileHash>{EFB862D1-9246-864F-A068-B3CDFC302276}</FileHash>
 </SoundBanksInfo>

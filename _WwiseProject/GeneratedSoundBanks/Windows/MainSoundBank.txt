@@ -32,6 +32,7 @@ State	ID	Name	State Group			Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	31898918	MainLoop_121 bpm	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Windows\SFX\MainLoop_121 bpm_FBC78EF0.wem		\Interactive Music Hierarchy\Default Work Unit\BGM\Combat\MainLoop_121 bpm\MainLoop_121 bpm\MainLoop_121 bpm		12186608
 	140665588	GameEndYay	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Windows\SFX\GameEndYay_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameEndYay		216260
+	255905769	57918__denalwa__metal-pole	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Windows\SFX\57918__denalwa__metal-pole_299E9208.wem		\Actor-Mixer Hierarchy\Default Work Unit\HitObstacle\57918__denalwa__metal-pole		42380
 	283284255	HitBall	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Windows\SFX\Hit_1_F48C98F1.wem		\Actor-Mixer Hierarchy\Default Work Unit\HitBall		19556
 	310104256	Swing_2	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Windows\SFX\Swing_2_E9E65E0C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Swing\Swing_2		41404
 	362374126	Score	F:\skyha\Documents\Github\XiheFramework Demo\_WwiseProject\.cache\Windows\SFX\Score_2_13FF797D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Score		118788

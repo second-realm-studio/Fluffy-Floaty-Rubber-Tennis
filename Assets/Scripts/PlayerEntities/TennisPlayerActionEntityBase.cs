@@ -17,5 +17,13 @@ namespace PlayerEntities {
 
             owner = Game.Entity.GetEntity<TennisPlayerEntity>(OwnerId);
         }
+
+        public override void OnUpdateCallback() {
+            if (owner == null) {
+                Game.Entity.DestroyEntity(EntityId);
+            }
+
+            base.OnUpdateCallback();
+        }
     }
 }

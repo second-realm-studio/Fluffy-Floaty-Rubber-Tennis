@@ -54,8 +54,13 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 1747828fd937f21439e7325def67dac5,
       type: 2}
-  hitSound:
+  hitBallSound:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: fbdd8ed07e9deda468cddb48f94cc110,
+      type: 2}
+  hitObstacleSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 77521a107874ab7448800072a3c5a6da,
       type: 2}

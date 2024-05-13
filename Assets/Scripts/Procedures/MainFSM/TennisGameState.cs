@@ -10,6 +10,7 @@ namespace Procedures.MainFSM {
         private int m_WinScore;
         private uint m_LeftPlayerEntityId;
         private uint m_RightPlayerEntityId;
+        private uint m_BallEntityId;
 
         private uint m_LastHitPlayerId;
         private int m_HitCount;
@@ -17,9 +18,13 @@ namespace Procedures.MainFSM {
         public TennisGameState(StateMachine parentStateMachine, GameObject owner) : base(parentStateMachine, owner) { }
 
         public override void OnEnter() {
+            m_HitCount = 0;
+            m_LastHitPlayerId = 0;
+            Game.Blackboard.SetData(BlackboardDataNames.ScoreOffset, 0);
+
             Game.UI.ActivateUI(UINames.GameHud);
 
-            Game.Event.Subscribe(EventNames.OnScoreChanged, OnScoreChanged);
+            Game.Event.Subscribe(Game.Blackboard.OnDataChangeEventName, OnScoreChanged);
             Game.Event.Subscribe(EventNames.OnBallAddHitCount, OnBallAddHitCount);
 
             //input
@@ -49,6 +54,7 @@ namespace Procedures.MainFSM {
             var ball = Game.Entity.InstantiateEntity<GeneralBallEntity>("BallEntity_GeneralBall");
             ball.transform.position = new Vector3(0, 0, 0);
             ball.rigidBody.velocity = Vector3.zero;
+            m_BallEntityId = ball.EntityId;
 
             // m_WinScore = Game.Config.FetchConfig<int>(ConfigNames.GameWinScore);
             m_WinScore = 3;
@@ -60,6 +66,10 @@ namespace Procedures.MainFSM {
             Game.UI.UnactivateUI(UINames.GameHud);
             Game.Entity.DestroyEntity(m_LeftPlayerEntityId);
             Game.Entity.DestroyEntity(m_RightPlayerEntityId);
+            Game.Entity.DestroyEntity(m_BallEntityId);
+
+            m_HitCount = 0;
+            m_LastHitPlayerId = 0;
         }
 
         private void OnBallAddHitCount(object sender, object e) {
@@ -90,22 +100,28 @@ namespace Procedures.MainFSM {
         }
 
         private void OnScoreChanged(object sender, object e) {
-            if (sender is not uint scorerId) {
+            if (sender is not string dataName) {
                 return;
             }
 
-            if (e is not int currentScoreOffset) {
+            if (dataName != BlackboardDataNames.ScoreOffset) {
                 return;
             }
+
+            var currentScoreOffset = (int)e;
 
             if (currentScoreOffset <= -m_WinScore) {
                 //left win
-                Game.LogicTime.SetGlobalTimeScaleInSecond(0.2f, 4f, true);
+                Game.LogicTime.SetGlobalTimeScaleInSecond(0.1f, 4f, true);
+                Game.Blackboard.SetData(BlackboardDataNames.WinnerName, "Left");
+                ChangeState(GameLoopStatesNames.GameOver);
             }
 
             if (currentScoreOffset >= m_WinScore) {
                 //right win
-                Game.LogicTime.SetGlobalTimeScaleInSecond(0.2f, 4f, true);
+                Game.LogicTime.SetGlobalTimeScaleInSecond(0.1f, 4f, true);
+                Game.Blackboard.SetData(BlackboardDataNames.WinnerName, "Right");
+                ChangeState(GameLoopStatesNames.GameOver);
             }
         }
     }

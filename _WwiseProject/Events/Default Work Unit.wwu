@@ -207,7 +207,7 @@
 								<Action Name="" ID="{08B76D65-ACCE-4316-9839-A794BE1288AC}" ShortID="58013628">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="HitBall" ID="{CC139D73-3F2B-4F09-8CDA-C41C23618B1E}" WorkUnitID="{4415D529-183D-4900-B154-DD466B01A935}"/>
+											<ObjectRef Name="HitObstacle" ID="{B9D9CDA0-F60B-4046-AC85-82455303FF41}" WorkUnitID="{4415D529-183D-4900-B154-DD466B01A935}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
