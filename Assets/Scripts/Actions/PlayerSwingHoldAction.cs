@@ -70,6 +70,9 @@ namespace Actions {
         private void OnDrawGizmos() {
             Gizmos.color = Color.red;
             //draw sphere cast
+            if (owner==null) {
+                return;
+            }
             var aimDir = new Vector2(Game.Input(owner.inputId).GetAxis(InputNames.AimHorizontal), Game.Input(owner.inputId).GetAxis(InputNames.AimVertical));
             aimDir.Normalize();
             Gizmos.DrawWireSphere(owner.transform.position - aimDir.ToVector3(V2ToV3Type.XY) * owner.swingRadius / 2, owner.swingRadius / 2);

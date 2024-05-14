@@ -33,16 +33,10 @@ namespace Actions {
             m_SwingDir = FetchArgument<Vector2>(ActionArgumentNames.SwingDirection);
             var swingCharge01 = FetchArgument<float>(ActionArgumentNames.SwingPower01);
 
-            var isHit = Physics.SphereCast(owner.transform.position - m_SwingDir.ToVector3(V2ToV3Type.XY) * owner.swingRadius, owner.swingRadius,
+            var isHit = Physics.SphereCast(owner.transform.position - m_SwingDir.ToVector3(V2ToV3Type.XY) * owner.swingRadius / 2f, owner.swingRadius,
                 m_SwingDir.ToVector3(V2ToV3Type.XY), out var sphereHit, owner.swingRadius, hitLayerMask, QueryTriggerInteraction.Ignore);
 
             if (isHit) {
-                var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                go.transform.position = sphereHit.point;
-                go.transform.localScale = Vector3.one * 0.1f;
-                go.GetComponent<Renderer>().material = hitMaterial;
-                Destroy(go.gameObject, 1f);
-
                 var deltaDir = sphereHit.point - owner.transform.position;
                 var distance = Vector3.Distance(owner.transform.position, sphereHit.point);
                 distance = Mathf.Clamp(distance, 0, owner.swingRadius);
@@ -53,7 +47,6 @@ namespace Actions {
                 if (rb != null) {
                     if (rb.GetComponent<GeneralBallEntity>() != null) {
                         //is a ball
-                        Game.LogicTime.SetGlobalTimeScaleInSecond(0.05f, 0.75f, true);
                         Game.Event.Invoke(EventNames.OnBallHit, owner.EntityId);
                         hitBallSound.Post(owner.gameObject);
                         soundPlayed = true;
@@ -73,12 +66,11 @@ namespace Actions {
 
                 var dirDot = Vector3.Dot(m_SwingDir.ToVector3(V2ToV3Type.XY), -owner.rigidBody.velocity.normalized);
                 dirDot = dirDot / 2 + 0.5f;
+                owner.rigidBody.velocity *= dirDot;
                 if (Physics.Raycast(sphereHit.point, -deltaDir, out var hitOnOwner, owner.swingRadius)) {
-                    owner.rigidBody.velocity *= dirDot;
                     owner.rigidBody.AddForceAtPosition(-(force), hitOnOwner.point, ForceMode.Impulse);
                 }
                 else {
-                    owner.rigidBody.velocity *= dirDot;
                     owner.rigidBody.AddForceAtPosition(-(force), owner.transform.position, ForceMode.Impulse);
                 }
             }

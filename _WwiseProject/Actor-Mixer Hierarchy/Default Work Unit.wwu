@@ -111,6 +111,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="HitBall" ID="{CC139D73-3F2B-4F09-8CDA-C41C23618B1E}" ShortID="877675865">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3748741C-22B9-4CF9-9FFD-CE4B329FA32D}"/>

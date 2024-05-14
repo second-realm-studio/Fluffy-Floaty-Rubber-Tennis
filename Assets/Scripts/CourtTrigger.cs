@@ -22,17 +22,12 @@ public class CourtTrigger : MonoBehaviour {
 
             Game.Blackboard.SetData(BlackboardDataNames.HitCount, currentHitCount);
             // Game.Event.Invoke(EventNames.OnCourtChange, isRightSide, null);
-
-#if UNITY_EDITOR
-            GetComponent<Renderer>().enabled = false;
-#endif
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-#if UNITY_EDITOR
-        GetComponent<Renderer>().enabled = true;
-        GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.7f);
-#endif
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        var colSize = GetComponent<BoxCollider>().size;
+        Gizmos.DrawWireCube(transform.position, Vector3.Scale(transform.localScale, colSize));
     }
 }

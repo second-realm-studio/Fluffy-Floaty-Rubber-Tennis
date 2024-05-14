@@ -49,6 +49,8 @@ namespace UI {
             m_P1Ready = false;
             m_P2Ready = false;
             m_BothSideReady = false;
+            countdownImageP1.enabled = false;
+            countdownImageP2.enabled = false;
 
             m_CameraP1 = GameObject.Find("SelectionCameraP1").GetComponent<Camera>();
             m_CameraP2 = GameObject.Find("SelectionCameraP2").GetComponent<Camera>();
@@ -74,9 +76,7 @@ namespace UI {
 
         private void Update() {
             UpdateSelectedTypes();
-
             UpdateCamera();
-
             UpdateStats();
 
             if (!m_P1Ready) {
@@ -85,6 +85,8 @@ namespace UI {
                     m_P1Ready = true;
                     countdownImageP1.enabled = true;
                     countdownImageP1.sprite = countdownReady;
+                    var displayEntity=Game.Entity.GetEntity<AnimalDisplayEntity.AnimalDisplayEntity>(m_DisplayEntityIds[(int)m_P1SelectedAnimalType]);
+                    displayEntity.OnSelected();
                 }
             }
 
@@ -94,26 +96,28 @@ namespace UI {
                     m_P2Ready = true;
                     countdownImageP2.enabled = true;
                     countdownImageP2.sprite = countdownReady;
-                }
-            }
-
-            if (m_P1Ready) {
-                if (Game.Input(0).GetButtonDown(InputNames.UICancel)) {
-                    m_P1Ready = false;
-                    countdownImageP1.enabled = false;
-                    countdownImageP1.sprite = null;
-                }
-            }
-
-            if (m_P2Ready) {
-                if (Game.Input(1).GetButtonDown(InputNames.UICancel)) {
-                    m_P2Ready = false;
-                    countdownImageP2.enabled = false;
-                    countdownImageP2.sprite = null;
+                    var displayEntity=Game.Entity.GetEntity<AnimalDisplayEntity.AnimalDisplayEntity>(m_DisplayEntityIds[(int)m_P2SelectedAnimalType]);
+                    displayEntity.animator.Play("Selected");
                 }
             }
 
             if (!m_BothSideReady) {
+                if (m_P1Ready) {
+                    if (Game.Input(0).GetButtonDown(InputNames.UICancel)) {
+                        m_P1Ready = false;
+                        countdownImageP1.enabled = false;
+                        countdownImageP1.sprite = null;
+                    }
+                }
+
+                if (m_P2Ready) {
+                    if (Game.Input(1).GetButtonDown(InputNames.UICancel)) {
+                        m_P2Ready = false;
+                        countdownImageP2.enabled = false;
+                        countdownImageP2.sprite = null;
+                    }
+                }
+
                 if (m_P1Ready && m_P2Ready) {
                     StartCoroutine(CountdownCo());
                     m_BothSideReady = true;
@@ -245,7 +249,7 @@ namespace UI {
                 else if (Game.Input(0).GetButtonDown(InputNames.UILeft)) {
                     m_P1SelectedAnimalId--;
                 }
-                
+
                 m_P1SelectedAnimalId = Mathf.Clamp(m_P1SelectedAnimalId, 0, 5);
                 m_P1SelectedAnimalType = (AnimalType)Mathf.FloorToInt(m_P1SelectedAnimalId);
             }

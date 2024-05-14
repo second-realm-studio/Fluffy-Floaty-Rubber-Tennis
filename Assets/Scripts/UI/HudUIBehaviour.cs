@@ -15,7 +15,7 @@ namespace UI {
         protected override void OnActive() {
             UpdateScoreSlider();
 
-            m_OnDataChangeEventHandlerId = Game.Event.Subscribe(Game.Blackboard.OnDataChangeEventName, OnDataChange);
+            m_OnDataChangeEventHandlerId = Game.Event.Subscribe(Game.Blackboard.onDataChangeEventName, OnDataChange);
         }
 
         private void OnDataChange(object sender, object e) {
@@ -58,7 +58,7 @@ namespace UI {
         }
 
         protected override void OnUnActive() {
-            Game.Event.Unsubscribe(Game.Blackboard.OnDataChangeEventName, m_OnDataChangeEventHandlerId);
+            Game.Event.Unsubscribe(Game.Blackboard.onDataChangeEventName, m_OnDataChangeEventHandlerId);
         }
     }
 }

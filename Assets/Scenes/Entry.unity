@@ -336,10 +336,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: XiheFramework Demo
       objectReference: {fileID: 0}
-    - target: {fileID: 8606296342884663205, guid: 72ef72439fba2ba428ba3f95fddc332b,
-        type: 3}
-      propertyPath: enableDebug
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72ef72439fba2ba428ba3f95fddc332b, type: 3}
