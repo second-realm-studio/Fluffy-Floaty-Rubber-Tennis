@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using Constants;
 using PlayerEntities;
 using UnityEngine;
+using UnityEngine.UI;
 using XiheFramework.Core.Utility.Extension;
 using XiheFramework.Runtime;
 
 namespace Actions {
     public class PlayerSwingHoldAction : TennisPlayerActionEntityBase {
         public override string EntityAddressName => PlayerActionNames.PlayerSwingHold;
+
+        public RectTransform arrowRect;
+        public Slider chargeSlider;
+        public float yOffset = 10f;
         public float chargeSpeed = 0.5f;
 
+        private RectTransform m_ChargeSliderRect;
         private float m_SwingPower;
         private Vector2 m_AimDir;
         private static readonly int SwingHolding = Animator.StringToHash("SwingHolding");
@@ -19,12 +25,16 @@ namespace Actions {
             base.OnActionInit();
 
             owner.animator.SetBool(SwingHolding, true);
+            m_ChargeSliderRect = chargeSlider.GetComponent<RectTransform>();
+            arrowRect.localScale = Vector3.one * owner.swingRadius / 22;
         }
 
         protected override void OnActionUpdate() {
             // var chargeSpeed = Game.Config.FetchConfig<float>(ConfigNames.PlayerSwingChargeSpeed);
             m_SwingPower += ScaledDeltaTime * chargeSpeed;
             m_SwingPower = Mathf.Clamp(m_SwingPower, 0, 1f);
+            m_ChargeSliderRect.anchoredPosition = Camera.main.WorldToScreenPoint(owner.transform.position + Vector3.up * yOffset);
+            chargeSlider.value = m_SwingPower;
             //rotate player hand to face opposite direction of the left joystick input
             var aimDirH = Game.Input(owner.inputId).GetAxis(InputNames.AimHorizontal);
             var aimDirV = Game.Input(owner.inputId).GetAxis(InputNames.AimVertical);
@@ -45,6 +55,12 @@ namespace Actions {
             if (m_AimDir.magnitude > 0.1f) {
                 // owner.armRTransform.rotation = Quaternion.LookRotation(Vector3.back, -aimDir.ToVector3(V2ToV3Type.XY));
                 owner.armRTransform.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, -m_AimDir.ToVector3(V2ToV3Type.XY), Vector3.forward));
+                arrowRect.gameObject.SetActive(true);
+                arrowRect.anchoredPosition = Camera.main.WorldToScreenPoint(owner.transform.position);
+                arrowRect.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, m_AimDir.ToVector3(V2ToV3Type.XY), Vector3.forward));
+            }
+            else {
+                arrowRect.gameObject.SetActive(false);
             }
         }
 

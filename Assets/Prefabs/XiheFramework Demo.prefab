@@ -95,7 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5833055649261691098}
-  - component: {fileID: 7285409885723654178}
+  - component: {fileID: 1696719254485324089}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -118,7 +118,7 @@ Transform:
   m_Father: {fileID: 1866179182288179742}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7285409885723654178
+--- !u!114 &1696719254485324089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -594,7 +594,7 @@ MonoBehaviour:
       _descriptiveName: SwingHold
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
-      _behaviorId: 0
+      _behaviorId: 3
       _userAssignable: 1
       _categoryId: 2
     - _id: 5
@@ -781,6 +781,29 @@ MonoBehaviour:
       _buttonLongPressExpiresIn: 0
       _buttonDeadZone: 0.5
       _buttonDownBuffer: 0
+      _buttonRepeatRate: 30
+      _buttonRepeatDelay: 0
+    - _id: 3
+      _name: LongInputBuffer
+      _joystickAxisSensitivity: 1
+      _digitalAxisSimulation: 1
+      _digitalAxisSnap: 1
+      _digitalAxisInstantReverse: 0
+      _digitalAxisGravity: 3
+      _digitalAxisSensitivity: 3
+      _mouseXYAxisMode: 0
+      _mouseOtherAxisMode: 0
+      _mouseXYAxisSensitivity: 1
+      _mouseXYAxisDeltaCalc: 0
+      _mouseOtherAxisSensitivity: 1
+      _customControllerAxisSensitivity: 1
+      _buttonDoublePressSpeed: 0.3
+      _buttonShortPressTime: 0.25
+      _buttonShortPressExpiresIn: 0
+      _buttonLongPressTime: 1
+      _buttonLongPressExpiresIn: 0
+      _buttonDeadZone: 0.5
+      _buttonDownBuffer: 0.4
       _buttonRepeatRate: 30
       _buttonRepeatDelay: 0
     mapCategories:
@@ -1385,7 +1408,7 @@ MonoBehaviour:
     playerIdCounter: 3
     actionIdCounter: 15
     actionCategoryIdCounter: 4
-    inputBehaviorIdCounter: 3
+    inputBehaviorIdCounter: 4
     mapCategoryIdCounter: 6
     joystickLayoutIdCounter: 4
     keyboardLayoutIdCounter: 2
