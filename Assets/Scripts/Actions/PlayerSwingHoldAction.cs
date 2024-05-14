@@ -19,6 +19,7 @@ namespace Actions {
         private RectTransform m_ChargeSliderRect;
         private float m_SwingPower;
         private Vector2 m_AimDir;
+        private Vector2 m_CachedArrowRotation;
         private static readonly int SwingHolding = Animator.StringToHash("SwingHolding");
 
         protected override void OnActionInit() {
@@ -56,8 +57,8 @@ namespace Actions {
                 // owner.armRTransform.rotation = Quaternion.LookRotation(Vector3.back, -aimDir.ToVector3(V2ToV3Type.XY));
                 owner.armRTransform.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, -m_AimDir.ToVector3(V2ToV3Type.XY), Vector3.forward));
                 arrowRect.gameObject.SetActive(true);
+                arrowRect.localRotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, m_AimDir.ToVector3(V2ToV3Type.XY), Vector3.forward));
                 arrowRect.anchoredPosition = Camera.main.WorldToScreenPoint(owner.transform.position);
-                arrowRect.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, m_AimDir.ToVector3(V2ToV3Type.XY), Vector3.forward));
             }
             else {
                 arrowRect.gameObject.SetActive(false);

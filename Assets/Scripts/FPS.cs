@@ -1,12 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using XiheFramework.Runtime;
 
 public class FPS : MonoBehaviour {
     private float delay;
     private float fps;
+
+#if UNITY_EDITOR
 
     private void OnGUI() {
         delay -= Time.deltaTime;
@@ -24,4 +23,5 @@ public class FPS : MonoBehaviour {
     private void Start() {
         DontDestroyOnLoad(gameObject);
     }
+#endif
 }

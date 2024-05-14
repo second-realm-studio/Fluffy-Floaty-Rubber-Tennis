@@ -12,23 +12,18 @@ namespace Procedures.MainFSM {
         private uint m_RightPlayerEntityId;
         private uint m_BallEntityId;
 
-        private uint m_LastHitPlayerId;
-        private int m_HitCount;
-
         private string m_OnScoreChangedEventHandlerId;
         private string m_OnBallAddHitCountEventHandlerId;
 
         public TennisGameState(StateMachine parentStateMachine, GameObject owner) : base(parentStateMachine, owner) { }
 
         public override void OnEnter() {
-            m_HitCount = 0;
-            m_LastHitPlayerId = 0;
             Game.Blackboard.SetData(BlackboardDataNames.ScoreOffset, 0);
 
             Game.UI.ActivateUI(UINames.GameHud);
 
             m_OnScoreChangedEventHandlerId = Game.Event.Subscribe(Game.Blackboard.OnDataChangeEventName, OnScoreChanged);
-            m_OnBallAddHitCountEventHandlerId = Game.Event.Subscribe(EventNames.OnBallAddHitCount, OnBallAddHitCount);
+            m_OnBallAddHitCountEventHandlerId = Game.Event.Subscribe(EventNames.OnBallHit, OnBallHit);
 
             //input
             Game.Input(0).controllers.maps.SetMapsEnabled(true, InputNames.CategoryGame);
@@ -67,41 +62,59 @@ namespace Procedures.MainFSM {
 
         public override void OnExit() {
             Game.Event.Unsubscribe(Game.Blackboard.OnDataChangeEventName, m_OnScoreChangedEventHandlerId);
-            Game.Event.Unsubscribe(EventNames.OnBallAddHitCount, m_OnBallAddHitCountEventHandlerId);
+            Game.Event.Unsubscribe(EventNames.OnBallHit, m_OnBallAddHitCountEventHandlerId);
             Game.UI.UnactivateUI(UINames.GameHud);
             Game.Entity.DestroyEntity(m_LeftPlayerEntityId);
             Game.Entity.DestroyEntity(m_RightPlayerEntityId);
             Game.Entity.DestroyEntity(m_BallEntityId);
-
-            m_HitCount = 0;
-            m_LastHitPlayerId = 0;
         }
 
-        private void OnBallAddHitCount(object sender, object e) {
+        private void OnBallHit(object sender, object e) {
             if (sender is not uint hitterId) {
                 return;
             }
 
-            if (m_LastHitPlayerId == hitterId) {
-                m_HitCount++;
-            }
-            else {
-                m_HitCount = 1;
-                m_LastHitPlayerId = hitterId;
+            var currentHitCount = Game.Blackboard.GetData<int>(BlackboardDataNames.HitCount);
+            var entity = Game.Entity.GetEntity<TennisPlayerEntity>(hitterId);
+            switch (currentHitCount) {
+                case 0:
+                    if (entity.isRightSide) {
+                        currentHitCount = 1;
+                    }
+                    else {
+                        currentHitCount = -1;
+                    }
+
+                    break;
+                case 2:
+                    if (entity.isRightSide) {
+                        //score
+                        var current = Game.Blackboard.GetData<int>(BlackboardDataNames.ScoreOffset);
+                        Game.Blackboard.SetData(BlackboardDataNames.ScoreOffset, current + 1);
+                        AkSoundEngine.PostEvent("Play_Score", Camera.main.gameObject);
+                        currentHitCount = 0;
+                    }
+                    else {
+                        currentHitCount = -1;
+                    }
+
+                    break;
+                case -2:
+                    if (!entity.isRightSide) {
+                        //score
+                        var current = Game.Blackboard.GetData<int>(BlackboardDataNames.ScoreOffset);
+                        Game.Blackboard.SetData(BlackboardDataNames.ScoreOffset, current - 1);
+                        AkSoundEngine.PostEvent("Play_Score", Camera.main.gameObject);
+                        currentHitCount = 0;
+                    }
+                    else {
+                        currentHitCount = 1;
+                    }
+
+                    break;
             }
 
-            if (m_HitCount >= 2) {
-                var current = Game.Blackboard.GetData<int>(BlackboardDataNames.ScoreOffset);
-                var entity = Game.Entity.GetEntity<TennisPlayerEntity>(hitterId);
-                if (entity.isRightSide) {
-                    Game.Blackboard.SetData(BlackboardDataNames.ScoreOffset, current + 1);
-                }
-                else {
-                    Game.Blackboard.SetData(BlackboardDataNames.ScoreOffset, current - 1);
-                }
-
-                m_HitCount = 0;
-            }
+            Game.Blackboard.SetData(BlackboardDataNames.HitCount, currentHitCount);
         }
 
         private void OnScoreChanged(object sender, object e) {

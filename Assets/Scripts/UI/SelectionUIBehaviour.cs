@@ -245,9 +245,7 @@ namespace UI {
                 else if (Game.Input(0).GetButtonDown(InputNames.UILeft)) {
                     m_P1SelectedAnimalId--;
                 }
-
-                Debug.Log(m_P1SelectedAnimalId);
-
+                
                 m_P1SelectedAnimalId = Mathf.Clamp(m_P1SelectedAnimalId, 0, 5);
                 m_P1SelectedAnimalType = (AnimalType)Mathf.FloorToInt(m_P1SelectedAnimalId);
             }

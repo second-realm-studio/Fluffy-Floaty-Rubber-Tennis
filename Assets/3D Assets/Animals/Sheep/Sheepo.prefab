@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9184491757916723841, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ee773d62b700134ba36f4aafcd301a2,
         type: 3}
       propertyPath: m_RootOrder
@@ -62,15 +67,75 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8555701617509271763, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -8541321748233824047, guid: 1ee773d62b700134ba36f4aafcd301a2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e355294a4cb9bf44c8e939483798e4db, type: 2}
+    - target: {fileID: -7358975577898938215, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2534359633899755696, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2470860459033193442, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 282154594906774604, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 748028098428290508, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1ee773d62b700134ba36f4aafcd301a2,
         type: 3}
       propertyPath: m_Name
-      value: sheep
+      value: Sheepo
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920201310972825112, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2959958459581164862, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320949728371774581, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216901724506508947, guid: 1ee773d62b700134ba36f4aafcd301a2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ee773d62b700134ba36f4aafcd301a2, type: 3}

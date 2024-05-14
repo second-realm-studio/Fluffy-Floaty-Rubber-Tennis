@@ -7,6 +7,8 @@ using XiheFramework.Runtime;
 namespace UI {
     public class HudUIBehaviour : UIBehaviour {
         public Slider scoreSlider;
+        public Slider hitBallSlider;
+        public Slider crossNetSlider;
 
         private string m_OnDataChangeEventHandlerId;
 
@@ -21,7 +23,7 @@ namespace UI {
                 return;
             }
 
-            if (dataName == BlackboardDataNames.ScoreOffset) {
+            if (dataName == BlackboardDataNames.ScoreOffset || dataName == BlackboardDataNames.HitCount) {
                 UpdateScoreSlider();
             }
         }
@@ -29,6 +31,30 @@ namespace UI {
         void UpdateScoreSlider() {
             var score = Game.Blackboard.GetData<int>(BlackboardDataNames.ScoreOffset);
             scoreSlider.value = score;
+
+            var hitCount = Game.Blackboard.GetData<int>(BlackboardDataNames.HitCount);
+            switch (hitCount) {
+                case 0:
+                    hitBallSlider.value = score;
+                    crossNetSlider.value = score;
+                    break;
+                case 1:
+                    hitBallSlider.value = score + 1;
+                    crossNetSlider.value = score;
+                    break;
+                case -1:
+                    hitBallSlider.value = score - 1;
+                    crossNetSlider.value = score;
+                    break;
+                case 2:
+                    hitBallSlider.value = score + 1;
+                    crossNetSlider.value = score + 1;
+                    break;
+                case -2:
+                    hitBallSlider.value = score - 1;
+                    crossNetSlider.value = score - 1;
+                    break;
+            }
         }
 
         protected override void OnUnActive() {

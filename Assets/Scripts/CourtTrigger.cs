@@ -12,7 +12,16 @@ public class CourtTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (ballLayer.Includes(other.gameObject.layer)) {
-            Game.Event.Invoke(EventNames.OnCourtChange, isRightSide, null);
+            var currentHitCount = Game.Blackboard.GetData<int>(BlackboardDataNames.HitCount);
+            if (currentHitCount == 1 && !isRightSide) {
+                currentHitCount++;
+            }
+            else if (currentHitCount == -1 && isRightSide) {
+                currentHitCount--;
+            }
+
+            Game.Blackboard.SetData(BlackboardDataNames.HitCount, currentHitCount);
+            // Game.Event.Invoke(EventNames.OnCourtChange, isRightSide, null);
 
 #if UNITY_EDITOR
             GetComponent<Renderer>().enabled = false;

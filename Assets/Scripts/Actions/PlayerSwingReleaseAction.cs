@@ -84,7 +84,7 @@ namespace Actions {
             }
             else {
                 //push air
-                owner.rigidBody.AddForceAtPosition(-m_SwingDir, owner.transform.position, ForceMode.Impulse);
+                owner.rigidBody.AddForceAtPosition(-m_SwingDir * (1f + swingCharge01), owner.transform.position, ForceMode.Impulse);
             }
 
             owner.armRTransform.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, m_SwingDir, Vector3.forward));
