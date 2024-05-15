@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Constants;
 using PlayerEntities;
+using Rewired;
 using UnityEngine;
 using UnityEngine.UI;
 using XiheFramework.Core.Utility.Extension;
@@ -37,9 +38,8 @@ namespace Actions {
             m_ChargeSliderRect.anchoredPosition = Camera.main.WorldToScreenPoint(owner.transform.position + Vector3.up * yOffset);
             chargeSlider.value = m_SwingPower;
             //rotate player hand to face opposite direction of the left joystick input
-            var aimDirH = Game.Input(owner.inputId).GetAxis(InputNames.AimHorizontal);
-            var aimDirV = Game.Input(owner.inputId).GetAxis(InputNames.AimVertical);
-            var currentFrameDir = new Vector2(aimDirH, aimDirV);
+
+            var currentFrameDir = GetAim2D(owner.inputId);
             if (currentFrameDir.magnitude > 0.3f) {
                 m_AimDir = currentFrameDir;
             }
@@ -50,9 +50,34 @@ namespace Actions {
                     new KeyValuePair<string, object>(ActionArgumentNames.SwingPower01, m_SwingPower));
             }
 
-            if (!Game.Input(owner.inputId).GetButton(InputNames.SwingHold)) {
-                ChangeAction(PlayerActionNames.PlayerIdle);
+            // if (!Game.Input(owner.inputId).GetButton(InputNames.SwingHold)) {
+            //     ChangeAction(PlayerActionNames.PlayerIdle);
+            // }
+        }
+
+        private Vector2 GetAim2D(int ownerInputId) {
+            Vector2 result = new Vector2();
+            var activeDevice = ReInput.players.GetPlayer(owner.inputId).controllers.GetLastActiveController();
+            if (activeDevice == null) {
+                result = new Vector2();
             }
+
+            switch (activeDevice) {
+                case Joystick:
+                    var aimDirH = Game.Input(owner.inputId).GetAxis(InputNames.AimHorizontal);
+                    var aimDirV = Game.Input(owner.inputId).GetAxis(InputNames.AimVertical);
+                    result = new Vector2(aimDirH, aimDirV);
+                    break;
+                case Mouse or Keyboard :
+                    var mousePos = Game.Input(ownerInputId).controllers.Mouse.screenPosition;
+                    var playerScreenPos = Camera.main.WorldToScreenPoint(owner.transform.position).ToVector2(V3ToV2Type.XY);
+                    result = (mousePos - playerScreenPos).normalized;
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
         }
 
         private void LateUpdate() {

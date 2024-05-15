@@ -43,6 +43,8 @@ namespace UI {
 
         private List<uint> m_DisplayEntityIds = new List<uint>();
 
+        private string OnBothReadyEventHandlerId;
+
         protected override void OnActive() {
             m_P1SelectedAnimalId = 0;
             m_P2SelectedAnimalId = 0;
@@ -72,6 +74,13 @@ namespace UI {
 
             entity = Game.Entity.InstantiateEntity<AnimalDisplayEntity.AnimalDisplayEntity>($"AnimalDisplayEntity_{AnimalType.Mouse}");
             m_DisplayEntityIds.Add(entity.EntityId);
+
+            OnBothReadyEventHandlerId = Game.Event.Subscribe("Selection.BothReady", OnBothReady);
+        }
+
+        private void OnBothReady(object sender, object e) {
+            m_P1Ready = true;
+            m_P2Ready = true;
         }
 
         private void Update() {
@@ -236,6 +245,7 @@ namespace UI {
             m_CameraP2 = null;
 
             m_DisplayEntityIds.Clear();
+            Game.Event.Unsubscribe("Selection.BothReady", OnBothReadyEventHandlerId);
         }
 
 

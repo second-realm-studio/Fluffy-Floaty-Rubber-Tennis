@@ -13,12 +13,12 @@ TagManager:
   - UI
   - Ball
   - Character
-  - Obstacle
-  - AirWall
-  - CourtTrigger
+  - DynamicObstacle
+  - FixedObstacle
+  - SolidWall
   - CharacterSelection
-  - 
-  - 
+  - Player1
+  - Player2
   - 
   - 
   - 

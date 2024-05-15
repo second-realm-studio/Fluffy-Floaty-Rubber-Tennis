@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5217057648303400037}
   - component: {fileID: 7154035003518493733}
   - component: {fileID: 7658094521298402693}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,6 +137,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4919016967307056131}
     m_Modifications:
+    - target: {fileID: 1412950652071507514, guid: 55534f4aeaff2794595da13b0c2b723f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1440500402335553788, guid: 55534f4aeaff2794595da13b0c2b723f,
         type: 3}
       propertyPath: m_RootOrder
@@ -217,6 +222,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Racket
       objectReference: {fileID: 0}
+    - target: {fileID: 3339790652750360454, guid: 55534f4aeaff2794595da13b0c2b723f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55534f4aeaff2794595da13b0c2b723f, type: 3}
 --- !u!4 &4277082984750434991 stripped
@@ -232,10 +242,55 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5920277345761334137}
     m_Modifications:
+    - target: {fileID: 1366508905921825031, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411676498895878729, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1800291227117537644, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942237483428581593, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3126897808326071178, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379612191606284326, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4864455826198847560, guid: 08bb49f584d002942b70a6f6ea925b16,
         type: 3}
       propertyPath: m_Name
       value: Dogo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864455826198847560, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981802021870901461, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046115885492447796, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5244956756552530674, guid: 08bb49f584d002942b70a6f6ea925b16,
         type: 3}
@@ -305,6 +360,26 @@ PrefabInstance:
     - target: {fileID: 5244956756552530674, guid: 08bb49f584d002942b70a6f6ea925b16,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523954145113784661, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749210463384287334, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189777639010603777, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372550463257522215, guid: 08bb49f584d002942b70a6f6ea925b16,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

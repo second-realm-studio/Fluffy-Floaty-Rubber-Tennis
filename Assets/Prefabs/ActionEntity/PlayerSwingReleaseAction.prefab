@@ -46,10 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   afterSwingDuration: 0.5
+  swingCoverAngle: 90
+  hitSortingMethod: 4
   hitMaterial: {fileID: 2100000, guid: b01bdf79367e81b43b0bc7aea985d2d6, type: 2}
   hitLayerMask:
     serializedVersion: 2
-    m_Bits: 960
+    m_Bits: 1984
   swingSound:
     idInternal: 0
     valueGuidInternal: 

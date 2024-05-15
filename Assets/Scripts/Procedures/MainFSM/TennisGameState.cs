@@ -40,12 +40,22 @@ namespace Procedures.MainFSM {
 
             var left = Game.Entity.InstantiateEntity<TennisPlayerEntity>($"TennisPlayerEntity_{leftPlayerAnimalType.ToString()}");
             m_LeftPlayerEntityId = left.EntityId;
+            left.gameObject.layer = LayerMask.NameToLayer("Player1");
+            foreach (Transform child in left.transform) {
+                child.gameObject.layer = LayerMask.NameToLayer("Player1");
+            }
+
             left.transform.position = new Vector3(-10, -0, 0);
             left.inputId = 0;
             left.isRightSide = false;
 
             var right = Game.Entity.InstantiateEntity<TennisPlayerEntity>($"TennisPlayerEntity_{rightPlayerAnimalType.ToString()}");
             m_RightPlayerEntityId = right.EntityId;
+            right.gameObject.layer = LayerMask.NameToLayer("Player2");
+            foreach (Transform child in right.transform) {
+                child.gameObject.layer = LayerMask.NameToLayer("Player2");
+            }
+
             right.transform.position = new Vector3(10, 0, 0);
             right.inputId = 1;
             right.isRightSide = true;

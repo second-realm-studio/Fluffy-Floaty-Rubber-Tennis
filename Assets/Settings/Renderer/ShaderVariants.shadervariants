@@ -8,15 +8,12 @@ ShaderVariantCollection:
   m_PrefabAsset: {fileID: 0}
   m_Name: ShaderVariants
   m_Shaders:
-  - first: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-    second:
-      variants:
-      - keywords: 
-        passType: 0
   - first: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
       - keywords: 
+        passType: 0
+      - keywords: UNITY_UI_CLIP_RECT
         passType: 0
   - first: {fileID: 66, guid: 0000000000000000f000000000000000, type: 0}
     second:
@@ -26,6 +23,10 @@ ShaderVariantCollection:
   - first: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
+      - keywords: DIRECTIONAL LIGHTPROBE_SH
+        passType: 4
+      - keywords: DIRECTIONAL
+        passType: 5
       - keywords: 
         passType: 8
   - first: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
@@ -116,6 +117,11 @@ ShaderVariantCollection:
         passType: 0
       - keywords: _HIGH_QUALITY_SAMPLING
         passType: 0
+  - first: {fileID: 4800000, guid: 2aed67ad60045d54ba3a00c91e2d2631, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
   - first: {fileID: 4800000, guid: 5f1864addb451f54bae8c86d230f736e, type: 3}
     second:
       variants:
@@ -129,20 +135,12 @@ ShaderVariantCollection:
       - keywords: _ALPHATEST_ON
         passType: 8
       - keywords: 
-        passType: 11
-      - keywords: _ALPHATEST_ON
-        passType: 11
-      - keywords: 
         passType: 13
       - keywords: LIGHTMAP_ON _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _EMISSION
           _MAIN_LIGHT_SHADOWS _METALLICSPECGLOSSMAP _NORMALMAP _REFLECTION_PROBE_BLENDING
           _REFLECTION_PROBE_BOX_PROJECTION _SCREEN_SPACE_OCCLUSION
         passType: 13
       - keywords: LIGHTMAP_ON _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _EMISSION
-          _MAIN_LIGHT_SHADOWS _METALLICSPECGLOSSMAP _NORMALMAP _REFLECTION_PROBE_BLENDING
-          _REFLECTION_PROBE_BOX_PROJECTION _SCREEN_SPACE_OCCLUSION _SURFACE_TYPE_TRANSPARENT
-        passType: 13
-      - keywords: LIGHTMAP_ON _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _EMISSION
           _MAIN_LIGHT_SHADOWS _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
           _SCREEN_SPACE_OCCLUSION
         passType: 13
@@ -153,35 +151,13 @@ ShaderVariantCollection:
       - keywords: LIGHTMAP_ON _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS
           _METALLICSPECGLOSSMAP _NORMALMAP _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
           _SCREEN_SPACE_OCCLUSION _SURFACE_TYPE_TRANSPARENT
-        passType: 13
-      - keywords: LIGHTMAP_ON _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS
-          _NORMALMAP _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
-          _SCREEN_SPACE_OCCLUSION _SURFACE_TYPE_TRANSPARENT
-        passType: 13
-      - keywords: LIGHTMAP_ON _ADDITIONAL_LIGHTS _MAIN_LIGHT_SHADOWS _NORMALMAP
-        passType: 13
-      - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _ALPHAPREMULTIPLY_ON
-          _MAIN_LIGHT_SHADOWS _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
-          _SCREEN_SPACE_OCCLUSION _SURFACE_TYPE_TRANSPARENT
-        passType: 13
-      - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _ALPHAPREMULTIPLY_ON
-          _MAIN_LIGHT_SHADOWS _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
-          _SURFACE_TYPE_TRANSPARENT
         passType: 13
       - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _ALPHATEST_ON _MAIN_LIGHT_SHADOWS
           _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION _SCREEN_SPACE_OCCLUSION
-          _SURFACE_TYPE_TRANSPARENT
-        passType: 13
-      - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _ALPHATEST_ON _MAIN_LIGHT_SHADOWS
-          _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION _SURFACE_TYPE_TRANSPARENT
         passType: 13
       - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _EMISSION _MAIN_LIGHT_SHADOWS
           _METALLICSPECGLOSSMAP _NORMALMAP _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
           _SCREEN_SPACE_OCCLUSION
-        passType: 13
-      - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _EMISSION _MAIN_LIGHT_SHADOWS
-          _METALLICSPECGLOSSMAP _NORMALMAP _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
-          _SCREEN_SPACE_OCCLUSION _SURFACE_TYPE_TRANSPARENT
         passType: 13
       - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _EMISSION _MAIN_LIGHT_SHADOWS
           _METALLICSPECGLOSSMAP _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
@@ -199,37 +175,32 @@ ShaderVariantCollection:
           _SCREEN_SPACE_OCCLUSION _SURFACE_TYPE_TRANSPARENT
         passType: 13
       - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS
-          _NORMALMAP _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
-          _SCREEN_SPACE_OCCLUSION _SURFACE_TYPE_TRANSPARENT
-        passType: 13
-      - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS
-          _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
-        passType: 13
-      - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS
           _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION _SCREEN_SPACE_OCCLUSION
         passType: 13
       - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS
           _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION _SCREEN_SPACE_OCCLUSION
           _SURFACE_TYPE_TRANSPARENT
         passType: 13
-      - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS
-          _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION _SURFACE_TYPE_TRANSPARENT
-        passType: 13
       - keywords: _ADDITIONAL_LIGHTS _MAIN_LIGHT_SHADOWS
-        passType: 13
-      - keywords: _ADDITIONAL_LIGHTS _MAIN_LIGHT_SHADOWS _NORMALMAP
-        passType: 13
-      - keywords: _ALPHAPREMULTIPLY_ON
         passType: 13
       - keywords: _ALPHATEST_ON
         passType: 13
-      - keywords: _ALPHATEST_ON _MAIN_LIGHT_SHADOWS _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
-        passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS
-        passType: 13
-      - keywords: _MAIN_LIGHT_SHADOWS _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
-        passType: 13
       - keywords: _NORMALMAP
+        passType: 13
+  - first: {fileID: 4800000, guid: 0406db5a14f94604a8c57ccfbc9f3b46, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: PROCEDURAL_INSTANCING_ON
+        passType: 0
+      - keywords: PROCEDURAL_INSTANCING_ON _EMISSION _SCREEN_SPACE_OCCLUSION
+        passType: 0
+      - keywords: _EMISSION _SCREEN_SPACE_OCCLUSION
+        passType: 0
+      - keywords: 
+        passType: 13
+      - keywords: PROCEDURAL_INSTANCING_ON
         passType: 13
   - first: {fileID: 4800000, guid: 36e335017ad71d54fbb10842863188ae, type: 3}
     second:
@@ -239,18 +210,19 @@ ShaderVariantCollection:
   - first: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
     second:
       variants:
-      - keywords: 
-        passType: 0
       - keywords: _SCREEN_SPACE_OCCLUSION
         passType: 0
-      - keywords: _SCREEN_SPACE_OCCLUSION _SURFACE_TYPE_TRANSPARENT
-        passType: 0
-      - keywords: _SURFACE_TYPE_TRANSPARENT
-        passType: 0
-      - keywords: 
-        passType: 11
       - keywords: 
         passType: 13
+  - first: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: OUTLINE_ON
+        passType: 0
+      - keywords: OUTLINE_ON UNITY_UI_CLIP_RECT
+        passType: 0
   - first: {fileID: 4800000, guid: 421e3788c035f7a4794098a12ef84c83, type: 3}
     second:
       variants:
@@ -263,3 +235,80 @@ ShaderVariantCollection:
       variants:
       - keywords: 
         passType: 13
+  - first: {fileID: 4800000, guid: 5a711a01011934ebcb58ef5ad52159d6, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: -6465566751694194690, guid: 1a29b4d27eb8b04479ef89c00dea533d,
+      type: 3}
+    second:
+      variants:
+      - keywords: SHADOWS_DEPTH
+        passType: 8
+      - keywords: SHADOWS_DEPTH _ALPHABLEND_ON _CFXR_DISSOLVE _CFXR_DITHERED_SHADOWS_ON
+        passType: 8
+      - keywords: SHADOWS_DEPTH _ALPHABLEND_ON _CFXR_DISSOLVE _CFXR_SINGLE_CHANNEL
+        passType: 8
+      - keywords: SHADOWS_DEPTH _ALPHABLEND_ON _CFXR_DISSOLVE _CFXR_SINGLE_CHANNEL
+          _CFXR_UV_DISTORTION _CFXR_UV_DISTORTION_ADD
+        passType: 8
+      - keywords: SHADOWS_DEPTH _ALPHABLEND_ON _CFXR_SINGLE_CHANNEL
+        passType: 8
+      - keywords: 
+        passType: 13
+      - keywords: _ALPHABLEND_ON _CFXR_DISSOLVE _CFXR_HDR_BOOST _CFXR_SINGLE_CHANNEL
+          _CFXR_UV_DISTORTION _CFXR_UV_DISTORTION_ADD _FADING_ON
+        passType: 13
+      - keywords: _ALPHABLEND_ON _CFXR_DISSOLVE _CFXR_HDR_BOOST _CFXR_SINGLE_CHANNEL
+          _FADING_ON
+        passType: 13
+      - keywords: _ALPHABLEND_ON _CFXR_DISSOLVE _FADING_ON
+        passType: 13
+      - keywords: _ALPHABLEND_ON _CFXR_HDR_BOOST _CFXR_SINGLE_CHANNEL _FADING_ON
+        passType: 13
+  - first: {fileID: 4800000, guid: d09abe9036011f94a9e27ccc73cea0ac, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: -6465566751694194690, guid: 67dfcda17071f4a41be79c4049965e67,
+      type: 3}
+    second:
+      variants:
+      - keywords: SHADOWS_DEPTH
+        passType: 8
+      - keywords: 
+        passType: 13
+  - first: {fileID: 4800000, guid: bccaaca1f83315c4aad8d95e28fd9149, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: -6465566751694194690, guid: 304630dc6079b47419e5333f284382fd,
+      type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 13
+  - first: {fileID: -6465566751694194690, guid: 1581eccce46ba384596a1dce7936ab19,
+      type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 8
+      - keywords: SHADOWS_DEPTH
+        passType: 8
+      - keywords: SHADOWS_DEPTH _CFXR_DISSOLVE
+        passType: 8
+      - keywords: 
+        passType: 13
+      - keywords: _CFXR_DISSOLVE _CFXR_HDR_BOOST _FADING_ON
+        passType: 13
+      - keywords: _CFXR_HDR_BOOST _FADING_ON
+        passType: 13
+  - first: {fileID: 4800000, guid: bc5c65c64d948bf438dd916daa892958, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0

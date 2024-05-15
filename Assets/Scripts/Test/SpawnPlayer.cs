@@ -11,11 +11,19 @@ namespace Test {
             left.transform.position = new Vector3(-10, 0, 0);
             left.isRightSide = false;
             left.inputId = 0;
+            left.gameObject.layer = LayerMask.NameToLayer("Player1");
+            foreach (Transform child in left.transform) {
+                child.gameObject.layer = LayerMask.NameToLayer("Player1");
+            }
 
             var right = Game.Entity.InstantiateEntity<TennisPlayerEntity>("TennisPlayerEntity_Rabbit");
             right.transform.position = new Vector3(10, 0, 0);
             right.inputId = 1;
             right.isRightSide = true;
+            right.gameObject.layer = LayerMask.NameToLayer("Player2");
+            foreach (Transform child in right.transform) {
+                child.gameObject.layer = LayerMask.NameToLayer("Player2");
+            }
 
             //spawn ball
             var ball = Game.Entity.InstantiateEntity<GeneralBallEntity>("BallEntity_GeneralBall");

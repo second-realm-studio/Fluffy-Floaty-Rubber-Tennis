@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.Serialization;
+﻿using PlayerEntities;
 using XiheFramework.Combat.Action;
 using XiheFramework.Runtime;
 
-namespace PlayerEntities {
+namespace Actions {
     public abstract class TennisPlayerActionEntityBase : ActionEntity {
         public TennisPlayerEntity owner;
 
