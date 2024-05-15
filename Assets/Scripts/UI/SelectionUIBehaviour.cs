@@ -85,7 +85,7 @@ namespace UI {
                     m_P1Ready = true;
                     countdownImageP1.enabled = true;
                     countdownImageP1.sprite = countdownReady;
-                    var displayEntity=Game.Entity.GetEntity<AnimalDisplayEntity.AnimalDisplayEntity>(m_DisplayEntityIds[(int)m_P1SelectedAnimalType]);
+                    var displayEntity = Game.Entity.GetEntity<AnimalDisplayEntity.AnimalDisplayEntity>(m_DisplayEntityIds[(int)m_P1SelectedAnimalType]);
                     displayEntity.OnSelected();
                 }
             }
@@ -96,8 +96,8 @@ namespace UI {
                     m_P2Ready = true;
                     countdownImageP2.enabled = true;
                     countdownImageP2.sprite = countdownReady;
-                    var displayEntity=Game.Entity.GetEntity<AnimalDisplayEntity.AnimalDisplayEntity>(m_DisplayEntityIds[(int)m_P2SelectedAnimalType]);
-                    displayEntity.animator.Play("Selected");
+                    var displayEntity = Game.Entity.GetEntity<AnimalDisplayEntity.AnimalDisplayEntity>(m_DisplayEntityIds[(int)m_P2SelectedAnimalType]);
+                    displayEntity.OnSelected();
                 }
             }
 

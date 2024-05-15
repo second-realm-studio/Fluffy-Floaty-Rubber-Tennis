@@ -21,6 +21,7 @@ namespace Procedures.MainFSM {
         }
 
         public override void OnExit() {
+            Game.Blackboard.RemoveData(BlackboardDataNames.WinnerName);
             Game.UI.UnactivateUI(UINames.GameOver);
         }
     }

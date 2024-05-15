@@ -96,17 +96,17 @@ PrefabInstance:
     - target: {fileID: 802053342191800742, guid: be84258d158bbdc479c6a894a2aac14f,
         type: 3}
       propertyPath: field of view
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 802053342191800742, guid: be84258d158bbdc479c6a894a2aac14f,
         type: 3}
       propertyPath: far clip plane
-      value: 1000
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 1635057039818296145, guid: be84258d158bbdc479c6a894a2aac14f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1886087629417698430, guid: be84258d158bbdc479c6a894a2aac14f,
         type: 3}
@@ -141,12 +141,12 @@ PrefabInstance:
     - target: {fileID: 7355444522904677835, guid: be84258d158bbdc479c6a894a2aac14f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7355444522904677835, guid: be84258d158bbdc479c6a894a2aac14f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -576.4
+      value: -787.4
       objectReference: {fileID: 0}
     - target: {fileID: 7355444522904677835, guid: be84258d158bbdc479c6a894a2aac14f,
         type: 3}
@@ -924,9 +924,20 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 2
+        _actionId: -1
         _elementType: 1
         _elementIdentifierId: 10
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 2
+        _elementType: 1
+        _elementIdentifierId: 12
         _axisRange: 0
         _invert: 0
         _axisContribution: 0
@@ -1048,6 +1059,17 @@ MonoBehaviour:
         _actionId: -1
         _elementType: 1
         _elementIdentifierId: 22
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: -1
         _axisRange: 0
         _invert: 0
         _axisContribution: 0

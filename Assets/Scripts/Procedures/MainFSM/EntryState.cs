@@ -10,7 +10,6 @@ namespace Procedures.MainFSM {
 
         public override void OnEnter() {
             Game.Scene.LoadSceneAsync(SceneNames.Menu, LoadSceneMode.Single, true, (handle) => { ChangeState(GameLoopStatesNames.Menu); });
-            AkSoundEngine.PostEvent("Play_BGM", Camera.main.gameObject);
             AkSoundEngine.SetState("BGM", "None");
         }
 

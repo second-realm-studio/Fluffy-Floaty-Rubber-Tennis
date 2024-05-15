@@ -27,7 +27,7 @@ namespace Actions {
 
             owner.animator.SetBool(SwingHolding, true);
             m_ChargeSliderRect = chargeSlider.GetComponent<RectTransform>();
-            arrowRect.localScale = Vector3.one * owner.swingRadius / 22;
+            arrowRect.localScale = Vector3.one * owner.swingRadius / 11;
         }
 
         protected override void OnActionUpdate() {
@@ -39,9 +39,12 @@ namespace Actions {
             //rotate player hand to face opposite direction of the left joystick input
             var aimDirH = Game.Input(owner.inputId).GetAxis(InputNames.AimHorizontal);
             var aimDirV = Game.Input(owner.inputId).GetAxis(InputNames.AimVertical);
-            m_AimDir = new Vector2(aimDirH, aimDirV);
+            var currentFrameDir = new Vector2(aimDirH, aimDirV);
+            if (currentFrameDir.magnitude > 0.3f) {
+                m_AimDir = currentFrameDir;
+            }
 
-            if (Game.Input(owner.inputId).GetButtonDown(InputNames.SwingRelease)) {
+            if (Game.Input(owner.inputId).GetButtonUp(InputNames.SwingRelease)) {
                 ChangeAction(PlayerActionNames.PlayerSwingRelease,
                     new KeyValuePair<string, object>(ActionArgumentNames.SwingDirection, m_AimDir.normalized),
                     new KeyValuePair<string, object>(ActionArgumentNames.SwingPower01, m_SwingPower));
@@ -70,9 +73,10 @@ namespace Actions {
         private void OnDrawGizmos() {
             Gizmos.color = Color.red;
             //draw sphere cast
-            if (owner==null) {
+            if (owner == null) {
                 return;
             }
+
             var aimDir = new Vector2(Game.Input(owner.inputId).GetAxis(InputNames.AimHorizontal), Game.Input(owner.inputId).GetAxis(InputNames.AimVertical));
             aimDir.Normalize();
             Gizmos.DrawWireSphere(owner.transform.position - aimDir.ToVector3(V2ToV3Type.XY) * owner.swingRadius / 2, owner.swingRadius / 2);

@@ -2,6 +2,7 @@ using System;
 using Balls;
 using Constants;
 using PlayerEntities;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 using XiheFramework.Combat.Action;
@@ -34,13 +35,13 @@ namespace Actions {
             var swingCharge01 = FetchArgument<float>(ActionArgumentNames.SwingPower01);
 
             var isHit = Physics.SphereCast(owner.transform.position - m_SwingDir.ToVector3(V2ToV3Type.XY) * owner.swingRadius / 2f, owner.swingRadius,
-                m_SwingDir.ToVector3(V2ToV3Type.XY), out var sphereHit, owner.swingRadius, hitLayerMask, QueryTriggerInteraction.Ignore);
+                m_SwingDir.ToVector3(V2ToV3Type.XY), out var sphereHit, owner.swingRadius / 2f, hitLayerMask, QueryTriggerInteraction.Ignore);
 
             if (isHit) {
                 var deltaDir = sphereHit.point - owner.transform.position;
-                var distance = Vector3.Distance(owner.transform.position, sphereHit.point);
-                distance = Mathf.Clamp(distance, 0, owner.swingRadius);
                 var force = m_SwingDir.ToVector3(V2ToV3Type.XY) * (owner.power * swingCharge01);
+
+                Game.Particle.PlayParticle(OwnerId, ParticleNames.HitObstacle, sphereHit.point, quaternion.identity, Vector3.one * 3f, false, false);
 
                 var soundPlayed = false;
                 var rb = sphereHit.collider.GetComponentInParent<Rigidbody>();
@@ -54,6 +55,7 @@ namespace Actions {
                         dirDotBall = dirDotBall / 2 + 0.5f;
                         rb.velocity *= dirDotBall;
                         rb.AddForceAtPosition(force, sphereHit.point, ForceMode.Impulse);
+                        Game.LogicTime.SetGlobalTimeScaleInSecond(0.1f, 0.8f, true);
                     }
                     else {
                         rb.AddForceAtPosition(force, sphereHit.point, ForceMode.Impulse);
@@ -91,14 +93,11 @@ namespace Actions {
 
         public override void OnLateUpdateCallback() {
             base.OnLateUpdateCallback();
-            owner.armRTransform.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, m_SwingDir, Vector3.forward));
+            if (owner != null) {
+                owner.armRTransform.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, m_SwingDir, Vector3.forward));
+            }
         }
 
         protected override void OnActionExit() { }
-
-        private void OnDrawGizmos() {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(owner.transform.position, owner.swingRadius);
-        }
     }
 }

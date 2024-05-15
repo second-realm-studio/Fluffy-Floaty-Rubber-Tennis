@@ -7,7 +7,7 @@ using XiheFramework.Runtime;
 
 namespace Procedures.MainFSM {
     public class TennisGameState : State<GameObject> {
-        private int m_WinScore;
+        private int m_WinScore = 6;
         private uint m_LeftPlayerEntityId;
         private uint m_RightPlayerEntityId;
         private uint m_BallEntityId;
@@ -18,7 +18,8 @@ namespace Procedures.MainFSM {
         public TennisGameState(StateMachine parentStateMachine, GameObject owner) : base(parentStateMachine, owner) { }
 
         public override void OnEnter() {
-            Game.Blackboard.SetData(BlackboardDataNames.ScoreOffset, 0);
+            Game.Blackboard.SetData(BlackboardDataNames.HitCountP1, 0);
+            Game.Blackboard.SetData(BlackboardDataNames.HitCountP2, 0);
 
             Game.UI.ActivateUI(UINames.GameHud);
 
@@ -39,13 +40,13 @@ namespace Procedures.MainFSM {
 
             var left = Game.Entity.InstantiateEntity<TennisPlayerEntity>($"TennisPlayerEntity_{leftPlayerAnimalType.ToString()}");
             m_LeftPlayerEntityId = left.EntityId;
-            left.transform.position = new Vector3(-87, -18, 0);
+            left.transform.position = new Vector3(-10, -0, 0);
             left.inputId = 0;
             left.isRightSide = false;
 
             var right = Game.Entity.InstantiateEntity<TennisPlayerEntity>($"TennisPlayerEntity_{rightPlayerAnimalType.ToString()}");
             m_RightPlayerEntityId = right.EntityId;
-            right.transform.position = new Vector3(87, -18, 0);
+            right.transform.position = new Vector3(10, 0, 0);
             right.inputId = 1;
             right.isRightSide = true;
 
@@ -55,7 +56,6 @@ namespace Procedures.MainFSM {
             m_BallEntityId = ball.EntityId;
 
             // m_WinScore = Game.Config.FetchConfig<int>(ConfigNames.GameWinScore);
-            m_WinScore = 3;
         }
 
         public override void OnUpdate() { }
@@ -67,54 +67,48 @@ namespace Procedures.MainFSM {
             Game.Entity.DestroyEntity(m_LeftPlayerEntityId);
             Game.Entity.DestroyEntity(m_RightPlayerEntityId);
             Game.Entity.DestroyEntity(m_BallEntityId);
+            Game.Blackboard.RemoveData(BlackboardDataNames.HitCountP1);
+            Game.Blackboard.RemoveData(BlackboardDataNames.HitCountP2);
         }
 
         private void OnBallHit(object sender, object e) {
             if (sender is not uint hitterId) {
                 return;
             }
-            
-            var currentHitCount = Game.Blackboard.GetData<int>(BlackboardDataNames.HitCount);
+
+
             var entity = Game.Entity.GetEntity<TennisPlayerEntity>(hitterId);
-            switch (currentHitCount) {
-                case 0:
-                    if (entity.isRightSide) {
-                        currentHitCount = 1;
-                    }
-                    else {
-                        currentHitCount = -1;
-                    }
+            if (entity.isRightSide) {
+                var hitCountR = Game.Blackboard.GetData<int>(BlackboardDataNames.HitCountP2);
+                Game.Blackboard.SetData(BlackboardDataNames.HitCountP2, hitCountR + 1);
 
-                    break;
-                case 2:
-                    if (entity.isRightSide) {
-                        //score
-                        var current = Game.Blackboard.GetData<int>(BlackboardDataNames.ScoreOffset);
-                        Game.Blackboard.SetData(BlackboardDataNames.ScoreOffset, current + 1);
-                        AkSoundEngine.PostEvent("Play_Score", Camera.main.gameObject);
-                        currentHitCount = 0;
-                    }
-                    else {
-                        currentHitCount = -1;
-                    }
-
-                    break;
-                case -2:
-                    if (!entity.isRightSide) {
-                        //score
-                        var current = Game.Blackboard.GetData<int>(BlackboardDataNames.ScoreOffset);
-                        Game.Blackboard.SetData(BlackboardDataNames.ScoreOffset, current - 1);
-                        AkSoundEngine.PostEvent("Play_Score", Camera.main.gameObject);
-                        currentHitCount = 0;
-                    }
-                    else {
-                        currentHitCount = 1;
-                    }
-
-                    break;
+                //reset p1 to last save point
+                var hitCountL = Game.Blackboard.GetData<int>(BlackboardDataNames.HitCountP1);
+                var lastSavePoint = GetLastSavePoint(hitCountL);
+                Game.Blackboard.SetData(BlackboardDataNames.HitCountP1, lastSavePoint);
             }
+            else {
+                var hitCountL = Game.Blackboard.GetData<int>(BlackboardDataNames.HitCountP1);
+                Game.Blackboard.SetData(BlackboardDataNames.HitCountP1, hitCountL + 1);
 
-            Game.Blackboard.SetData(BlackboardDataNames.HitCount, currentHitCount);
+                //reset p2 to last save point
+                var hitCountR = Game.Blackboard.GetData<int>(BlackboardDataNames.HitCountP2);
+                var lastSavePoint = GetLastSavePoint(hitCountR);
+                Game.Blackboard.SetData(BlackboardDataNames.HitCountP2, lastSavePoint);
+            }
+        }
+
+        int GetLastSavePoint(int currentHitCount) {
+            switch (currentHitCount) {
+                case 0: return 0;
+                case 1: return 1;
+                case 2: return 1;
+                case 3: return 3;
+                case 4: return 3;
+                case 5: return 3;
+                case 6: return 6;
+                default: return 0;
+            }
         }
 
         private void OnScoreChanged(object sender, object e) {
@@ -122,29 +116,25 @@ namespace Procedures.MainFSM {
                 return;
             }
 
-            if (dataName == BlackboardDataNames.ScoreOffset) {
-                var currentScoreOffset = (int)e;
+            if (dataName == BlackboardDataNames.HitCountP1) {
+                var countL = (int)e;
 
-                if (currentScoreOffset <= -m_WinScore) {
+                if (countL >= m_WinScore) {
                     //left win
                     Game.LogicTime.SetGlobalTimeScaleInSecond(0.1f, 4f, true);
                     Game.Blackboard.SetData(BlackboardDataNames.WinnerName, "Left");
                     ChangeState(GameLoopStatesNames.GameOver);
                 }
+            }
 
-                if (currentScoreOffset >= m_WinScore) {
+            if (dataName == BlackboardDataNames.HitCountP2) {
+                var countR = (int)e;
+
+                if (countR >= m_WinScore) {
                     //right win
                     Game.LogicTime.SetGlobalTimeScaleInSecond(0.1f, 4f, true);
                     Game.Blackboard.SetData(BlackboardDataNames.WinnerName, "Right");
                     ChangeState(GameLoopStatesNames.GameOver);
-                }
-            }
-            
-            if (dataName == BlackboardDataNames.HitCount) {
-                var currentHitCount = (int)e;
-
-                if (currentHitCount!=0) {
-                    Game.LogicTime.SetGlobalTimeScaleInSecond(0.05f, 0.8f, true);
                 }
             }
         }

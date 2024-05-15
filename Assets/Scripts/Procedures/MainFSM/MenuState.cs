@@ -13,6 +13,7 @@ namespace Procedures.MainFSM {
         public override void OnEnter() {
             Game.UI.ActivateUI(UINames.Menu);
 
+            AkSoundEngine.PostEvent("Play_BGM", Camera.main.gameObject);
             AkSoundEngine.SetState("BGM", "Menu");
 
             m_OnStartBtnClickedEventHandlerId = Game.Event.Subscribe(EventNames.OnStartBtnClicked, OnStartBtnClicked);
