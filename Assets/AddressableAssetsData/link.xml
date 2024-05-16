@@ -2,8 +2,8 @@
   <assembly fullname="AK.Wwise.Unity.API.WwiseTypes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="WwiseBankReference" preserve="all" />
     <type fullname="WwiseEventReference" preserve="all" />
-    <type fullname="AK.Wwise.Bank" preserve="nothing" serialized="true" />
     <type fullname="AK.Wwise.Event" preserve="nothing" serialized="true" />
+    <type fullname="AK.Wwise.Bank" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="AK.Wwise.Unity.MonoBehaviour, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="AkAudioListener" preserve="all" />
@@ -304,12 +304,12 @@
     <type fullname="UnityEngine.UI.RectMask2D" preserve="all" />
     <type fullname="UnityEngine.UI.Slider" preserve="all" />
     <type fullname="UnityEngine.UI.AnimationTriggers" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.UI.Button/ButtonClickedEvent" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.UI.ColorBlock" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.UI.MaskableGraphic/CullStateChangedEvent" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.UI.Navigation" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.UI.SpriteState" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.UI.Slider/SliderEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.SpriteState" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Button/ButtonClickedEvent" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.Canvas" preserve="all" />

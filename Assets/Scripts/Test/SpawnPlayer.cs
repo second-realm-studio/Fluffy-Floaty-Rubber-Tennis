@@ -8,7 +8,7 @@ namespace Test {
     public class SpawnPlayer : MonoBehaviour {
         private void Start() {
             var left = Game.Entity.InstantiateEntity<TennisPlayerEntity>("TennisPlayerEntity_Goat");
-            left.transform.position = new Vector3(-10, 0, 0);
+            left.transform.position = new Vector3(-40, 0, 0);
             left.isRightSide = false;
             left.inputId = 0;
             left.gameObject.layer = LayerMask.NameToLayer("Player1");
@@ -17,7 +17,7 @@ namespace Test {
             }
 
             var right = Game.Entity.InstantiateEntity<TennisPlayerEntity>("TennisPlayerEntity_Rabbit");
-            right.transform.position = new Vector3(10, 0, 0);
+            right.transform.position = new Vector3(40, 0, 0);
             right.inputId = 1;
             right.isRightSide = true;
             right.gameObject.layer = LayerMask.NameToLayer("Player2");

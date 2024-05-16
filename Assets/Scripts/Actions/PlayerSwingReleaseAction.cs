@@ -104,11 +104,12 @@ namespace Actions {
                 if (isBall) {
                     var dirDotBall = Vector3.Dot(m_SwingDir, hitRb.velocity.normalized);
                     dirDotBall = dirDotBall / 2 + 0.5f;
-                    hitRb.velocity *= dirDotBall;
-                    hitRb.AddForceAtPosition(force, hitInfo.point, ForceMode.Impulse);
+                    // hitRb.velocity *= dirDotBall;
+                    hitRb.velocity = force.normalized * (hitRb.velocity.magnitude + force.magnitude);
+                    // hitRb.AddForceAtPosition(force, hitInfo.point, ForceMode.VelocityChange);
                     Game.Event.Invoke(EventNames.OnBallHit, owner.EntityId);
                     hitBallSound.Post(owner.gameObject);
-                    Game.LogicTime.SetGlobalTimeScaleInSecond(0.02f, 0.8f, true);
+                    Game.LogicTime.SetGlobalTimeScaleInSecond(0.02f, 0.65f, true);
                 }
                 else {
                     hitRb.AddForceAtPosition(force, hitInfo.point, ForceMode.Impulse);

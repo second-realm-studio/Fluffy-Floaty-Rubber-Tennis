@@ -22,6 +22,10 @@ public class MenuUIBehaviour : UIBehaviour {
     }
 
     private void LateUpdate() {
+        if (EventSystem.current.currentSelectedGameObject == null) {
+            EventSystem.current.SetSelectedGameObject(startButton.gameObject);
+        }
+
         if (EventSystem.current.currentSelectedGameObject == startButton.gameObject) {
             pointer.anchoredPosition += (startButtonPivot.anchoredPosition - pointer.anchoredPosition) * 0.2f;
         }

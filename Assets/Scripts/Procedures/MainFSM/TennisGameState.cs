@@ -45,7 +45,7 @@ namespace Procedures.MainFSM {
                 child.gameObject.layer = LayerMask.NameToLayer("Player1");
             }
 
-            left.transform.position = new Vector3(-10, -0, 0);
+            left.transform.position = new Vector3(-50f, 0, 0);
             left.inputId = 0;
             left.isRightSide = false;
 
@@ -56,12 +56,12 @@ namespace Procedures.MainFSM {
                 child.gameObject.layer = LayerMask.NameToLayer("Player2");
             }
 
-            right.transform.position = new Vector3(10, 0, 0);
+            right.transform.position = new Vector3(50f, 0, 0);
             right.inputId = 1;
             right.isRightSide = true;
 
             var ball = Game.Entity.InstantiateEntity<GeneralBallEntity>("BallEntity_GeneralBall");
-            ball.transform.position = new Vector3(0, 0, 0);
+            ball.transform.position = new Vector3(0, -50f, 0);
             ball.rigidBody.velocity = Vector3.zero;
             m_BallEntityId = ball.EntityId;
 

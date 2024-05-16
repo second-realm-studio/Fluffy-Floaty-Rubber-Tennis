@@ -253,7 +253,6 @@ namespace UI {
             // Player 1 selection logic
             if (!m_P1Ready) {
                 if (Game.Input(0).GetButtonDown(InputNames.UIRight)) {
-                    Debug.Log("Right");
                     m_P1SelectedAnimalId++;
                 }
                 else if (Game.Input(0).GetButtonDown(InputNames.UILeft)) {

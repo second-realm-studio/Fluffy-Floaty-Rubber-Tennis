@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Scenes
+  m_EditorClassIdentifier: 
+  m_GroupName: Scenes
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 4f70930a3ee5bef498d1035afe5d26eb
+  m_SerializeEntries:
+  - m_GUID: 4a843d05a14c93345a55c23d3d701c41
+    m_Address: Scene_Game
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d0e869ed1623fa640ab79b0d17d03702
+    m_Address: Scene_Menu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1eb7b631205c6c348837bb1b56db041f
+    m_Address: Assets/Scenes/Game/Global Volume Profile.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b37e3de3bc5dd444ea6ee0440ff33262, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 305afa78ee2027449b0b5c14119b8a6a, type: 2}
+    - {fileID: 11400000, guid: 296dd63dd9695ba428c3d4b2c06c9e4a, type: 2}
