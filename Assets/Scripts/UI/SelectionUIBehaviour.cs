@@ -90,7 +90,6 @@ namespace UI {
 
             if (!m_P1Ready) {
                 if (Game.Input(0).GetButtonDown(InputNames.UISubmit)) {
-                    Game.Blackboard.SetData(BlackboardDataNames.PlayerCharacterType(0), m_P1SelectedAnimalType);
                     m_P1Ready = true;
                     countdownImageP1.enabled = true;
                     countdownImageP1.sprite = countdownReady;
@@ -101,7 +100,6 @@ namespace UI {
 
             if (!m_P2Ready) {
                 if (Game.Input(1).GetButtonDown(InputNames.UISubmit)) {
-                    Game.Blackboard.SetData(BlackboardDataNames.PlayerCharacterType(1), m_P2SelectedAnimalType);
                     m_P2Ready = true;
                     countdownImageP2.enabled = true;
                     countdownImageP2.sprite = countdownReady;
@@ -128,8 +126,11 @@ namespace UI {
                 }
 
                 if (m_P1Ready && m_P2Ready) {
+                    Game.Blackboard.SetData(BlackboardDataNames.PlayerCharacterType(0), m_P1SelectedAnimalType);
+                    Game.Blackboard.SetData(BlackboardDataNames.PlayerCharacterType(1), m_P2SelectedAnimalType);
                     StartCoroutine(CountdownCo());
                     m_BothSideReady = true;
+                    
                 }
             }
         }
