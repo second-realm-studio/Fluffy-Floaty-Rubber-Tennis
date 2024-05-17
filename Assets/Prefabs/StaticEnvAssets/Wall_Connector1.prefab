@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2282573355304171984}
   - component: {fileID: 5685563098268857982}
   - component: {fileID: 7693196904965720106}
+  - component: {fileID: 4384848785780615308}
   m_Layer: 0
   m_Name: Wall_Connector1
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4384848785780615308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321320048345844550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b0c0e6d6e708b4b82da5c20864deb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickSpeed: 3
+  initialIntensity: 1.5

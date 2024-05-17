@@ -26,6 +26,7 @@ namespace PlayerEntities {
         public Rigidbody rigidBody;
         public Transform armRTransform;
         public Transform racketTransform;
+        public Renderer racketRenderer;
 
 #if UNITY_EDITOR
         private void OnValidate() {

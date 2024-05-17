@@ -114,6 +114,7 @@ MonoBehaviour:
   rigidBody: {fileID: 856479692733413344}
   armRTransform: {fileID: 2717937483313835508}
   racketTransform: {fileID: 4144071627642087703}
+  racketRenderer: {fileID: 2514186281872418308}
 --- !u!54 &856479692733413344
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -402,6 +403,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55534f4aeaff2794595da13b0c2b723f, type: 3}
+--- !u!23 &2514186281872418308 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 620145800761006063, guid: 55534f4aeaff2794595da13b0c2b723f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3062197383126659563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4144071627642087703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1440500402335553788, guid: 55534f4aeaff2794595da13b0c2b723f,

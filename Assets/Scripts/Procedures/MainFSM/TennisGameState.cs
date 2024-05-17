@@ -40,27 +40,30 @@ namespace Procedures.MainFSM {
 
             var left = Game.Entity.InstantiateEntity<TennisPlayerEntity>($"TennisPlayerEntity_{leftPlayerAnimalType.ToString()}");
             m_LeftPlayerEntityId = left.EntityId;
+            Game.Blackboard.SetData(BlackboardDataNames.EntityIdP1, m_LeftPlayerEntityId);
             left.gameObject.layer = LayerMask.NameToLayer("Player1");
+            left.transform.position = new Vector3(-50f, 0, 0);
+            left.inputId = 0;
+            left.isRightSide = false;
+            left.racketRenderer.material.color = new Color(0.9686275f, 0.6196079f, 0.6392157f);
             foreach (Transform child in left.transform) {
                 child.gameObject.layer = LayerMask.NameToLayer("Player1");
             }
 
-            left.transform.position = new Vector3(-50f, 0, 0);
-            left.inputId = 0;
-            left.isRightSide = false;
-
             var right = Game.Entity.InstantiateEntity<TennisPlayerEntity>($"TennisPlayerEntity_{rightPlayerAnimalType.ToString()}");
             m_RightPlayerEntityId = right.EntityId;
+            Game.Blackboard.SetData(BlackboardDataNames.EntityIdP2, m_RightPlayerEntityId);
             right.gameObject.layer = LayerMask.NameToLayer("Player2");
+            right.transform.position = new Vector3(50f, 0, 0);
+            right.inputId = 1;
+            right.isRightSide = true;
+            right.racketRenderer.material.color = new Color(1f, 0.854902f, 0.5764706f);
             foreach (Transform child in right.transform) {
                 child.gameObject.layer = LayerMask.NameToLayer("Player2");
             }
 
-            right.transform.position = new Vector3(50f, 0, 0);
-            right.inputId = 1;
-            right.isRightSide = true;
-
             var ball = Game.Entity.InstantiateEntity<GeneralBallEntity>("BallEntity_GeneralBall");
+            Game.Blackboard.SetData(BlackboardDataNames.EntityIdBall, ball.EntityId);
             ball.transform.position = new Vector3(0, -50f, 0);
             ball.rigidBody.velocity = Vector3.zero;
             m_BallEntityId = ball.EntityId;
@@ -77,6 +80,9 @@ namespace Procedures.MainFSM {
             Game.Entity.DestroyEntity(m_LeftPlayerEntityId);
             Game.Entity.DestroyEntity(m_RightPlayerEntityId);
             Game.Entity.DestroyEntity(m_BallEntityId);
+            Game.Blackboard.RemoveData(BlackboardDataNames.EntityIdP1);
+            Game.Blackboard.RemoveData(BlackboardDataNames.EntityIdP2);
+            Game.Blackboard.RemoveData(BlackboardDataNames.EntityIdBall);
             Game.Blackboard.RemoveData(BlackboardDataNames.HitCountP1);
             Game.Blackboard.RemoveData(BlackboardDataNames.HitCountP2);
         }

@@ -21,6 +21,7 @@ namespace Balls {
 
         public override void OnFixedUpdateCallback() {
             rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxSpeedClamp);
+            Game.Blackboard.SetData(BlackboardDataNames.BallVelocity, rigidBody.velocity);
         }
     }
 }

@@ -226,8 +226,8 @@ MonoBehaviour:
   owner: {fileID: 0}
   arrowRect: {fileID: 3082372866742461695}
   chargeSlider: {fileID: 598305642048000351}
-  yOffset: 10
-  chargeSpeed: 1.5
+  yOffset: 5
+  chargeSpeed: 2
 --- !u!1 &4150365919275556497
 GameObject:
   m_ObjectHideFlags: 0
