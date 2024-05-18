@@ -7,7 +7,7 @@ using XiheFramework.Runtime;
 namespace Procedures {
     public class StartGameLoop : MonoBehaviour {
         private void Start() {
-            Game.Event.Subscribe(GameManager.onXiheFrameworkInitialized, OnXiheFrameworkInitialized);
+            Game.Event.Subscribe(GameManager.OnXiheFrameworkInitialized, OnXiheFrameworkInitialized);
         }
 
         private void OnXiheFrameworkInitialized(object sender, object e) {
