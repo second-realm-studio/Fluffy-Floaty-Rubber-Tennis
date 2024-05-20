@@ -9,7 +9,6 @@ namespace Balls {
         public override string EntityGroupName => "BallEntity";
         public override string EntityAddressName => "GeneralBall";
 
-        public float maxSpeedClamp;
         public Rigidbody rigidBody;
 
 #if UNITY_EDITOR
@@ -20,7 +19,7 @@ namespace Balls {
 
 
         public override void OnFixedUpdateCallback() {
-            rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, maxSpeedClamp);
+            rigidBody.velocity = Vector3.ClampMagnitude(rigidBody.velocity, Game.Config.FetchConfig<float>(ConfigNames.BallMaxSpeed));
             Game.Blackboard.SetData(BlackboardDataNames.BallVelocity, rigidBody.velocity);
         }
     }

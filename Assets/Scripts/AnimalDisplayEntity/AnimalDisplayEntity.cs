@@ -9,18 +9,19 @@ namespace AnimalDisplayEntity {
         public override string EntityAddressName => animalType.ToString();
 
         public AnimalType animalType;
-        public Animator animator;
+        
+        private Animator m_Animator;
 
         public override void OnInitCallback() {
             base.OnInitCallback();
 
             transform.position = new Vector3((float)(int)animalType, -0.5f, 58);
-            animator = GetComponentInChildren<Animator>();
+            m_Animator = GetComponentInChildren<Animator>();
         }
 
         public void OnSelected() {
-            if (animator != null) {
-                animator.Play("Selected");
+            if (m_Animator != null) {
+                m_Animator.Play("Selected");
             }
         }
     }

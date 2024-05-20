@@ -15,7 +15,6 @@ namespace Actions {
         public RectTransform arrowRect;
         public Slider chargeSlider;
         public float yOffset = 10f;
-        public float chargeSpeed = 0.5f;
 
         private RectTransform m_ChargeSliderRect;
         private float m_SwingPower;
@@ -33,7 +32,7 @@ namespace Actions {
 
         protected override void OnActionUpdate() {
             // var chargeSpeed = Game.Config.FetchConfig<float>(ConfigNames.PlayerSwingChargeSpeed);
-            m_SwingPower += ScaledDeltaTime * chargeSpeed;
+            m_SwingPower += ScaledDeltaTime * Game.Config.FetchConfig<float>(ConfigNames.PlayerChargeSpeed);
             m_SwingPower = Mathf.Clamp(m_SwingPower, 0, 1f);
             m_ChargeSliderRect.anchoredPosition = Camera.main.WorldToScreenPoint(owner.transform.position + Vector3.up * yOffset);
             chargeSlider.value = m_SwingPower;

@@ -1,9 +1,11 @@
 ﻿using PlayerEntities;
+using UnityEngine;
 using XiheFramework.Combat.Action;
 using XiheFramework.Runtime;
 
 namespace Actions {
     public abstract class TennisPlayerActionEntityBase : ActionEntity {
+        [HideInInspector]
         public TennisPlayerEntity owner;
 
         public override string EntityGroupName => "TennisPlayerActionEntity";

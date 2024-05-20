@@ -7,7 +7,7 @@ using XiheFramework.Runtime;
 
 namespace Procedures.MainFSM {
     public class TennisGameState : State<GameObject> {
-        private int m_WinScore = 6;
+        private int m_WinScore = 0;
         private uint m_LeftPlayerEntityId;
         private uint m_RightPlayerEntityId;
         private uint m_BallEntityId;
@@ -18,6 +18,7 @@ namespace Procedures.MainFSM {
         public TennisGameState(StateMachine parentStateMachine, GameObject owner) : base(parentStateMachine, owner) { }
 
         public override void OnEnter() {
+            m_WinScore = Game.Config.FetchConfig<int>(ConfigNames.GameWinScore);
             Game.Blackboard.SetData(BlackboardDataNames.HitCountP1, 0);
             Game.Blackboard.SetData(BlackboardDataNames.HitCountP2, 0);
 
@@ -42,7 +43,7 @@ namespace Procedures.MainFSM {
             m_LeftPlayerEntityId = left.EntityId;
             Game.Blackboard.SetData(BlackboardDataNames.EntityIdP1, m_LeftPlayerEntityId);
             left.gameObject.layer = LayerMask.NameToLayer("Player1");
-            left.transform.position = new Vector3(-50f, 0, 0);
+            left.transform.position = Game.Config.FetchConfig<Vector3>(ConfigNames.PlayerSpawnPositionLeft);
             left.inputId = 0;
             left.isRightSide = false;
             left.racketRenderer.material.color = new Color(0.9686275f, 0.6196079f, 0.6392157f);
@@ -54,7 +55,7 @@ namespace Procedures.MainFSM {
             m_RightPlayerEntityId = right.EntityId;
             Game.Blackboard.SetData(BlackboardDataNames.EntityIdP2, m_RightPlayerEntityId);
             right.gameObject.layer = LayerMask.NameToLayer("Player2");
-            right.transform.position = new Vector3(50f, 0, 0);
+            right.transform.position = Game.Config.FetchConfig<Vector3>(ConfigNames.PlayerSpawnPositionRight);
             right.inputId = 1;
             right.isRightSide = true;
             right.racketRenderer.material.color = new Color(1f, 0.854902f, 0.5764706f);
@@ -91,7 +92,6 @@ namespace Procedures.MainFSM {
             if (sender is not uint hitterId) {
                 return;
             }
-
 
             var entity = Game.Entity.GetEntity<TennisPlayerEntity>(hitterId);
             if (entity.isRightSide) {
