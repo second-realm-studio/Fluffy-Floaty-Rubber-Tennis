@@ -30,7 +30,7 @@ namespace Procedures.MainFSM {
 
         private void OnStartBtnClicked(object sender, object e) {
             Game.UI.UnactivateUI(UINames.Menu);
-            Game.Scene.LoadSceneAsync(SceneNames.Game, LoadSceneMode.Single, true, (scene) => { ChangeState(GameLoopStatesNames.Selection); });
+            Game.Scene.LoadSceneAsync(SceneNames.Tutorial, LoadSceneMode.Single, true, (scene) => { ChangeState(GameLoopStatesNames.Tutorial); });
         }
 
         private void OnExitBtnClicked(object sender, object e) {

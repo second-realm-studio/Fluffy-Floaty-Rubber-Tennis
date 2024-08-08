@@ -43,7 +43,7 @@ namespace Procedures.MainFSM {
             m_LeftPlayerEntityId = left.EntityId;
             Game.Blackboard.SetData(BlackboardDataNames.EntityIdP1, m_LeftPlayerEntityId);
             left.gameObject.layer = LayerMask.NameToLayer("Player1");
-            left.transform.position = Game.Config.FetchConfig<Vector3>(ConfigNames.PlayerSpawnPositionLeft);
+            left.transform.position = Game.Config.FetchConfig<Vector3>(ConfigNames.GamePlayerSpawnPositionLeft);
             left.inputId = 0;
             left.isRightSide = false;
             left.racketRenderer.material.color = new Color(0.9686275f, 0.6196079f, 0.6392157f);
@@ -55,7 +55,7 @@ namespace Procedures.MainFSM {
             m_RightPlayerEntityId = right.EntityId;
             Game.Blackboard.SetData(BlackboardDataNames.EntityIdP2, m_RightPlayerEntityId);
             right.gameObject.layer = LayerMask.NameToLayer("Player2");
-            right.transform.position = Game.Config.FetchConfig<Vector3>(ConfigNames.PlayerSpawnPositionRight);
+            right.transform.position = Game.Config.FetchConfig<Vector3>(ConfigNames.GamePlayerSpawnPositionRight);
             right.inputId = 1;
             right.isRightSide = true;
             right.racketRenderer.material.color = new Color(1f, 0.854902f, 0.5764706f);

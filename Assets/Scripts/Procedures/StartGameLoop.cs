@@ -16,6 +16,7 @@ namespace Procedures {
             fsm.AddState(GameLoopStatesNames.Menu, new MenuState(fsm, null));
             fsm.AddState(GameLoopStatesNames.Selection, new SelectionState(fsm, null));
             fsm.AddState(GameLoopStatesNames.Game, new TennisGameState(fsm, null));
+            fsm.AddState(GameLoopStatesNames.Tutorial, new TennisTutorialState(fsm, null));
             fsm.AddState(GameLoopStatesNames.GameOver, new GameOverState(fsm, null));
             fsm.SetDefaultState(GameLoopStatesNames.Entry);
             fsm.Start();

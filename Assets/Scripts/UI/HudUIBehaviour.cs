@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using XiheFramework.Core.UI;
+using XiheFramework.Core.Utility.Extension;
 using XiheFramework.Runtime;
 
 namespace UI {
@@ -72,7 +73,19 @@ namespace UI {
                     var ballVelocity = Game.Blackboard.GetData<Vector3>(BlackboardDataNames.BallVelocity);
                     if (Vector3.Distance(ballVelocity, Vector3.zero) < ballTextDisplaySpeed) {
                         ballText.gameObject.SetActive(true);
-                        ballText.anchoredPosition = Camera.main.WorldToScreenPoint(ballPos + Vector3.up * ballYOffset);
+                        var screenPos = Camera.main.WorldToScreenPoint(ballPos + Vector3.up * ballYOffset);
+                        //if within screen
+                        if (screenPos.x > 0 && screenPos.x < Screen.width && screenPos.y > 0 && screenPos.y < Screen.height) {
+                            ballText.anchoredPosition = screenPos;
+                        }
+                        else {
+                            Debug.Log("ball out of screen");
+                            //display arrow to show the direction on screen edge
+                            var screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+                            var direction = screenPos - screenCenter;
+                            direction.Normalize();
+                            ballText.anchoredPosition = RayIntersection.GetIntersection(direction.ToVector2(V3ToV2Type.XY), Screen.width, Screen.height);
+                        }
                     }
                     else {
                         ballText.gameObject.SetActive(false);
